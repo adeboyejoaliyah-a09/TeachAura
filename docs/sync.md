@@ -1,6 +1,8 @@
-# Class sync protocol (v1)
+# Sync protocol (v1)
 
-The first sync slice supports the `classes` entity only. Every request is authenticated with a Supabase access token; the server derives `owner_id` from the verified JWT subject and ignores client-supplied ownership fields.
+Every request is authenticated with a Supabase access token; the server derives `owner_id` from the verified JWT subject and rejects client-supplied ownership or other server-managed fields. The original class request shape below remains supported. Changes for other registered entities include an `entity` field.
+
+## Class sync protocol (v1)
 
 ## Push changes
 
@@ -90,4 +92,49 @@ Clients should apply pull changes by record id and version, persist the returned
 
 Errors use `{ "error": { "code": "...", "message": "...", "details": ... } }`. Request validation errors return HTTP 400; absent or invalid tokens return 401. Cross-teacher reads and writes are blocked by transaction-scoped PostgreSQL row-level security as well as repository ownership checks. Database operations set the teacher context only from the verified token subject. The deployed application database role must be non-superuser and `NOBYPASSRLS`; use a separate migration role for schema changes.
 
-Apply migrations with `npm run db:deploy` in deployed environments. The initial `classes` protocol does not sync subjects or other tables.
+Apply migrations with `npm run db:deploy` in deployed environments. Configure the restricted application role using `scripts/grant-app-role.sql` after migrations.
+
+## Registered entities
+
+The generic engine is driven by `src/modules/sync/registry.ts`. Each registry entry binds a public entity name to its Prisma model, strict Zod client-payload schema, `ownerId` ownership field, payload-to-model field mappings, and any foreign-key or domain validation. Push, idempotency, versioning, soft deletion, and pull serialization use this metadata rather than entity-specific engine branches. Server-controlled `owner_id`, `version`, `created_at`, `updated_at`, and `deleted_at` are never accepted in payloads.
+
+Each upsert uses the following entity-specific payload fields in addition to the client-generated `id` UUID:
+
+| Entity                   | Writable payload fields                                                                                      |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `classes`                | `name`, `grade_level`                                                                                        |
+| `subjects`               | `name`                                                                                                       |
+| `teacher_class_subjects` | `class_id`, `subject_id`; `teacher_id` is derived from the authenticated teacher                             |
+| `academic_sessions`      | `name`, `start_date`, `end_date`                                                                             |
+| `terms`                  | `academic_session_id`, `name`, `term_number`, `start_date`, `end_date`                                       |
+| `holidays_and_closures`  | `academic_session_id`, optional `term_id`, `name`, `start_date`, `end_date`, `kind` (`holiday` or `closure`) |
+| `timetable_slots`        | `class_id`, `subject_id`, `day_of_week` (1-7), `start_time` (`HH:mm`), `duration_minutes`, optional `room`   |
+
+Dates use `YYYY-MM-DD`. Each change retains the `change_id`, `base_version`, and `operation` rules described above. For example, a subject upsert is:
+
+```json
+{
+  "entity": "subjects",
+  "change_id": "4d027e20-f88f-4330-9d26-e42202b64349",
+  "base_version": 0,
+  "operation": "upsert",
+  "record": {
+    "id": "fd7f35dd-820b-468a-9605-3cb6fe4f18ce",
+    "name": "Mathematics"
+  }
+}
+```
+
+Foreign keys are checked against rows owned by the authenticated teacher. In particular, a timetable slot's class and subject, a term's academic session, and a closure's academic session and optional term must be accessible to that teacher. A closure's term must belong to its declared academic session. PostgreSQL row-level security remains the final tenant boundary; synced rows use versioned soft deletes and are not hard-deleted by the application role.
+
+## Adding a syncable entity
+
+1. Define the Prisma model with a client UUID primary key, `ownerId`, version, timestamps, tombstone, and owner/update indexes.
+2. Add any relations, constraints, and back-relations to `prisma/schema.prisma`.
+3. Add the entity to Prisma's `SyncEntity` enum and `syncEntities` in the registry.
+4. Add a strict payload schema containing only client-writable fields.
+5. Add the field mappings between payload names, Prisma names, and output names.
+6. Declare ownership, foreign-key metadata, server-derived create fields, or custom validation in the registry entry.
+7. Add an additive migration with the table, indexes, constraints, matching owner RLS policies, and sync enum change.
+8. Add the table to `scripts/grant-app-role.sql` with only the required restricted-role privileges.
+9. Add registry/unit and restricted-role PostgreSQL tests, then document the entity payload here.

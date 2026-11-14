@@ -6,7 +6,7 @@ import {
 import { z } from "zod";
 import {
   pullResponseSchema,
-  pushBodySchema,
+  pushBatchSchema,
   pushResponseSchema,
 } from "./modules/sync/schemas.js";
 
@@ -73,7 +73,7 @@ registry.registerPath({
   request: {
     body: {
       required: true,
-      content: { "application/json": { schema: pushBodySchema } },
+      content: { "application/json": { schema: pushBatchSchema } },
     },
   },
   responses: {

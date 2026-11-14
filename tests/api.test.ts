@@ -71,11 +71,17 @@ class MemorySyncRepository implements SyncRepository {
   private sequence = 0;
 
   async applyChange(ownerId: string, change: PushChange): Promise<PushResult> {
+    const id = change.record.id;
+    if (typeof id !== "string") throw new Error("Class id must be a string");
+    const incomingName = change.record.name;
+    if (typeof incomingName !== "string" && change.operation === "upsert") {
+      throw new Error("Class name must be a string");
+    }
     const receiptKey = `${ownerId}:${change.change_id}`;
     const receipt = this.receipts.get(receiptKey);
     if (receipt) return { ...receipt, replayed: true };
 
-    const owner = this.ownerByRecord.get(change.record.id);
+    const owner = this.ownerByRecord.get(id);
     let result: PushResult;
     if (owner && owner !== ownerId) {
       result = {
@@ -85,7 +91,7 @@ class MemorySyncRepository implements SyncRepository {
         message: "A class with this id already exists.",
       };
     } else {
-      const current = this.records.get(change.record.id);
+      const current = this.records.get(id);
       if (!current && change.operation === "delete") {
         result = {
           change_id: change.change_id,
@@ -103,23 +109,26 @@ class MemorySyncRepository implements SyncRepository {
       } else {
         const now = new Date().toISOString();
         const conflict = current && current.version !== change.base_version;
+        const name =
+          typeof incomingName === "string"
+            ? incomingName
+            : (current?.name ?? "");
         const record = {
-          id: change.record.id,
-          name:
-            change.operation === "upsert"
-              ? change.record.name
-              : (current?.name ?? ""),
+          id,
+          name: change.operation === "upsert" ? name : (current?.name ?? ""),
           grade_level:
             change.operation === "upsert"
-              ? (change.record.grade_level ?? null)
+              ? typeof change.record.grade_level === "string"
+                ? change.record.grade_level
+                : null
               : (current?.grade_level ?? null),
           version: (current?.version ?? 0) + 1,
           created_at: current?.created_at ?? now,
           updated_at: now,
           deleted_at: change.operation === "delete" ? now : null,
         };
-        this.records.set(change.record.id, record);
-        this.ownerByRecord.set(change.record.id, ownerId);
+        this.records.set(id, record);
+        this.ownerByRecord.set(id, ownerId);
         result = {
           change_id: change.change_id,
           status: "accepted",
@@ -146,7 +155,7 @@ class MemorySyncRepository implements SyncRepository {
         result.status === "accepted"
           ? {
               change_id: change.change_id,
-              entity: "classes",
+              entity: change.entity,
               operation: change.operation,
               record: result.record,
             }

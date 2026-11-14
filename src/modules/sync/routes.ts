@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { z } from "zod";
 import { HttpError } from "../../lib/http-error.js";
+import { parseSyncChange } from "./registry.js";
 import type { SyncRepository } from "./repository.js";
 import { decodeCursor, encodeCursor } from "./cursor.js";
 import {
   pullResponseSchema,
-  pushChangeSchema,
+  pushBatchSchema,
   pushResponseSchema,
 } from "./schemas.js";
 
@@ -23,12 +24,7 @@ export function createSyncRouter(
   const router = Router();
 
   router.post("/push", async (request, response, next) => {
-    const body = z
-      .object({
-        changes: z.array(z.unknown()).min(1).max(100),
-      })
-      .strict()
-      .safeParse(request.body);
+    const body = pushBatchSchema.safeParse(request.body);
     if (!body.success) {
       next(
         new HttpError(
@@ -43,14 +39,14 @@ export function createSyncRouter(
 
     const results: Array<Record<string, unknown>> = [];
     for (const [index, rawChange] of body.data.changes.entries()) {
-      const parsed = pushChangeSchema.safeParse(rawChange);
+      const parsed = parseSyncChange(rawChange);
       if (!parsed.success) {
         results.push({
           index,
           status: "rejected",
           reason: "invalid_change",
           message: "This change did not match the sync schema.",
-          details: parsed.error.issues,
+          details: parsed.details,
         });
         continue;
       }

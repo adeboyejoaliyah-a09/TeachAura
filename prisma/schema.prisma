@@ -14,6 +14,12 @@ enum TeacherRole {
 
 enum SyncEntity {
   classes
+  subjects
+  teacher_class_subjects
+  academic_sessions
+  terms
+  holidays_and_closures
+  timetable_slots
 }
 
 enum SyncOperation {
@@ -24,6 +30,11 @@ enum SyncOperation {
 enum SyncStatus {
   accepted
   rejected
+}
+
+enum HolidayClosureKind {
+  holiday
+  closure
 }
 
 model Teacher {
@@ -37,6 +48,10 @@ model Teacher {
   subjects         Subject[]
   classSubjects    TeacherClassSubject[]
   ownedAssignments TeacherClassSubject[] @relation("AssignmentOwner")
+  academicSessions AcademicSession[]
+  terms            Term[]
+  holidaysClosures HolidayClosure[]
+  timetableSlots   TimetableSlot[]
   syncChanges      SyncChange[]
   createdAt        DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt        DateTime              @updatedAt @map("updated_at") @db.Timestamptz(6)
@@ -61,16 +76,17 @@ model School {
 }
 
 model SchoolClass {
-  id         String                @id @default(uuid()) @db.Uuid
-  ownerId    String                @map("owner_id") @db.Uuid
-  owner      Teacher               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  name       String                @db.VarChar(120)
-  gradeLevel String?               @map("grade_level") @db.VarChar(80)
-  version    Int                   @default(1)
-  createdAt  DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt  DateTime              @updatedAt @map("updated_at") @db.Timestamptz(6)
-  deletedAt  DateTime?             @map("deleted_at") @db.Timestamptz(6)
-  subjects   TeacherClassSubject[]
+  id             String                @id @default(uuid()) @db.Uuid
+  ownerId        String                @map("owner_id") @db.Uuid
+  owner          Teacher               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  name           String                @db.VarChar(120)
+  gradeLevel     String?               @map("grade_level") @db.VarChar(80)
+  version        Int                   @default(1)
+  createdAt      DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt      DateTime              @updatedAt @map("updated_at") @db.Timestamptz(6)
+  deletedAt      DateTime?             @map("deleted_at") @db.Timestamptz(6)
+  subjects       TeacherClassSubject[]
+  timetableSlots TimetableSlot[]
 
   @@index([ownerId, updatedAt])
   @@index([ownerId, deletedAt])
@@ -79,16 +95,19 @@ model SchoolClass {
 }
 
 model Subject {
-  id            String                @id @default(uuid()) @db.Uuid
-  ownerId       String                @map("owner_id") @db.Uuid
-  owner         Teacher               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  name          String                @db.VarChar(120)
-  createdAt     DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt     DateTime              @updatedAt @map("updated_at") @db.Timestamptz(6)
-  deletedAt     DateTime?             @map("deleted_at") @db.Timestamptz(6)
-  classSubjects TeacherClassSubject[]
+  id             String                @id @default(uuid()) @db.Uuid
+  ownerId        String                @map("owner_id") @db.Uuid
+  owner          Teacher               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  name           String                @db.VarChar(120)
+  createdAt      DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt      DateTime              @updatedAt @map("updated_at") @db.Timestamptz(6)
+  deletedAt      DateTime?             @map("deleted_at") @db.Timestamptz(6)
+  version        Int                   @default(1)
+  classSubjects  TeacherClassSubject[]
+  timetableSlots TimetableSlot[]
 
   @@index([ownerId, updatedAt])
+  @@index([ownerId, deletedAt])
   @@index([updatedAt])
   @@map("subjects")
 }
@@ -99,6 +118,9 @@ model TeacherClassSubject {
   teacherId String      @map("teacher_id") @db.Uuid
   classId   String      @map("class_id") @db.Uuid
   subjectId String      @map("subject_id") @db.Uuid
+  version   Int         @default(1)
+  updatedAt DateTime    @updatedAt @map("updated_at") @db.Timestamptz(6)
+  deletedAt DateTime?   @map("deleted_at") @db.Timestamptz(6)
   teacher   Teacher     @relation(fields: [teacherId], references: [id], onDelete: Cascade)
   owner     Teacher     @relation("AssignmentOwner", fields: [ownerId], references: [id], onDelete: Cascade)
   class     SchoolClass @relation(fields: [classId], references: [id], onDelete: Cascade)
@@ -109,7 +131,104 @@ model TeacherClassSubject {
   @@index([ownerId])
   @@index([classId])
   @@index([subjectId])
+  @@index([ownerId, updatedAt])
+  @@index([ownerId, deletedAt])
   @@map("teacher_class_subjects")
+}
+
+model AcademicSession {
+  id               String           @id @default(uuid()) @db.Uuid
+  ownerId          String           @map("owner_id") @db.Uuid
+  owner            Teacher          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  name             String           @db.VarChar(120)
+  startDate        DateTime         @map("start_date") @db.Date
+  endDate          DateTime         @map("end_date") @db.Date
+  version          Int              @default(1)
+  createdAt        DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt        DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+  deletedAt        DateTime?        @map("deleted_at") @db.Timestamptz(6)
+  terms            Term[]
+  holidaysClosures HolidayClosure[]
+
+  @@unique([ownerId, name])
+  @@index([ownerId, updatedAt])
+  @@index([ownerId, deletedAt])
+  @@index([updatedAt])
+  @@map("academic_sessions")
+}
+
+model Term {
+  id                String           @id @default(uuid()) @db.Uuid
+  ownerId           String           @map("owner_id") @db.Uuid
+  owner             Teacher          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  academicSessionId String           @map("academic_session_id") @db.Uuid
+  academicSession   AcademicSession  @relation(fields: [academicSessionId], references: [id], onDelete: Cascade)
+  name              String           @db.VarChar(120)
+  termNumber        Int              @map("term_number")
+  startDate         DateTime         @map("start_date") @db.Date
+  endDate           DateTime         @map("end_date") @db.Date
+  version           Int              @default(1)
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamptz(6)
+  holidaysClosures  HolidayClosure[]
+
+  @@unique([academicSessionId, termNumber])
+  @@index([ownerId, updatedAt])
+  @@index([ownerId, deletedAt])
+  @@index([academicSessionId])
+  @@index([updatedAt])
+  @@map("terms")
+}
+
+model HolidayClosure {
+  id                String             @id @default(uuid()) @db.Uuid
+  ownerId           String             @map("owner_id") @db.Uuid
+  owner             Teacher            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  academicSessionId String             @map("academic_session_id") @db.Uuid
+  academicSession   AcademicSession    @relation(fields: [academicSessionId], references: [id], onDelete: Cascade)
+  termId            String?            @map("term_id") @db.Uuid
+  term              Term?              @relation(fields: [termId], references: [id], onDelete: SetNull)
+  name              String             @db.VarChar(160)
+  startDate         DateTime           @map("start_date") @db.Date
+  endDate           DateTime           @map("end_date") @db.Date
+  kind              HolidayClosureKind
+  version           Int                @default(1)
+  createdAt         DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime           @updatedAt @map("updated_at") @db.Timestamptz(6)
+  deletedAt         DateTime?          @map("deleted_at") @db.Timestamptz(6)
+
+  @@index([ownerId, updatedAt])
+  @@index([ownerId, deletedAt])
+  @@index([academicSessionId])
+  @@index([termId])
+  @@index([updatedAt])
+  @@map("holidays_and_closures")
+}
+
+model TimetableSlot {
+  id              String      @id @default(uuid()) @db.Uuid
+  ownerId         String      @map("owner_id") @db.Uuid
+  owner           Teacher     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  classId         String      @map("class_id") @db.Uuid
+  class           SchoolClass @relation(fields: [classId], references: [id], onDelete: Cascade)
+  subjectId       String      @map("subject_id") @db.Uuid
+  subject         Subject     @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  dayOfWeek       Int         @map("day_of_week")
+  startTime       String      @map("start_time") @db.VarChar(5)
+  durationMinutes Int         @map("duration_minutes")
+  room            String?     @db.VarChar(80)
+  version         Int         @default(1)
+  createdAt       DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime    @updatedAt @map("updated_at") @db.Timestamptz(6)
+  deletedAt       DateTime?   @map("deleted_at") @db.Timestamptz(6)
+
+  @@index([ownerId, updatedAt])
+  @@index([ownerId, deletedAt])
+  @@index([classId])
+  @@index([subjectId])
+  @@index([updatedAt])
+  @@map("timetable_slots")
 }
 
 model SyncChange {

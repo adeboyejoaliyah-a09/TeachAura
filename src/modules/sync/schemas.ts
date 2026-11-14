@@ -1,65 +1,46 @@
 import { z } from "zod";
+import {
+  syncEntities,
+  type ParsedSyncChange,
+  type SyncedRecord,
+} from "./registry.js";
 
-const commonChange = {
-  change_id: z.string().uuid(),
-  base_version: z.number().int().nonnegative(),
-};
+export type PushChange = ParsedSyncChange;
+export interface ClassRecord extends SyncedRecord {
+  id: string;
+  name: string;
+  grade_level: string | null;
+  version: number;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+}
 
-const classId = z.string().uuid();
-
-export const pushChangeSchema = z.discriminatedUnion("operation", [
-  z
-    .object({
-      ...commonChange,
-      operation: z.literal("upsert"),
-      record: z
-        .object({
-          id: classId,
-          name: z.string().trim().min(1).max(120),
-          grade_level: z.string().trim().max(80).nullable().optional(),
-        })
-        .strict(),
-    })
-    .strict(),
-  z
-    .object({
-      ...commonChange,
-      operation: z.literal("delete"),
-      record: z.object({ id: classId }).strict(),
-    })
-    .strict(),
-]);
-
-export const pushBodySchema = z
-  .object({
-    changes: z.array(pushChangeSchema).min(1).max(100),
-  })
+export const syncEntitySchema = z.enum(syncEntities);
+export const pushBatchSchema = z
+  .object({ changes: z.array(z.unknown()).min(1).max(100) })
   .strict();
 
-export type PushChange = z.infer<typeof pushChangeSchema>;
-
-export const classRecordSchema = z.object({
-  id: classId,
-  name: z.string(),
-  grade_level: z.string().nullable(),
-  version: z.number().int().positive(),
-  created_at: z.string().datetime(),
-  updated_at: z.string().datetime(),
-  deleted_at: z.string().datetime().nullable(),
-});
-
-export type ClassRecord = z.infer<typeof classRecordSchema>;
+export const syncRecordSchema = z
+  .object({
+    id: z.string().uuid(),
+    version: z.number().int().positive(),
+    created_at: z.string().datetime(),
+    updated_at: z.string().datetime(),
+    deleted_at: z.string().datetime().nullable(),
+  })
+  .passthrough();
 
 export const pushResultSchema = z.discriminatedUnion("status", [
   z.object({
     change_id: z.string().uuid(),
     status: z.literal("accepted"),
-    record: classRecordSchema,
+    record: syncRecordSchema,
     conflict: z
       .object({
         base_version: z.number().int().nonnegative(),
         current_version: z.number().int().positive(),
-        losing_record: classRecordSchema,
+        losing_record: syncRecordSchema,
       })
       .optional(),
     replayed: z.boolean().optional(),
@@ -67,13 +48,31 @@ export const pushResultSchema = z.discriminatedUnion("status", [
   z.object({
     change_id: z.string().uuid(),
     status: z.literal("rejected"),
-    reason: z.enum(["not_found", "id_conflict"]),
+    reason: z.enum(["not_found", "id_conflict", "validation_failed"]),
     message: z.string(),
     replayed: z.boolean().optional(),
   }),
 ]);
 
-export type PushResult = z.infer<typeof pushResultSchema>;
+export type PushResult =
+  | {
+      change_id: string;
+      status: "accepted";
+      record: SyncedRecord;
+      conflict?: {
+        base_version: number;
+        current_version: number;
+        losing_record: SyncedRecord;
+      };
+      replayed?: boolean;
+    }
+  | {
+      change_id: string;
+      status: "rejected";
+      reason: "not_found" | "id_conflict" | "validation_failed";
+      message: string;
+      replayed?: boolean;
+    };
 
 export const invalidChangeResultSchema = z.object({
   index: z.number().int().nonnegative(),
@@ -106,9 +105,9 @@ export const pullResponseSchema = z.object({
   changes: z.array(
     z.object({
       change_id: z.string().uuid(),
-      entity: z.literal("classes"),
+      entity: syncEntitySchema,
       operation: z.enum(["upsert", "delete"]),
-      record: classRecordSchema,
+      record: syncRecordSchema,
     }),
   ),
   next_cursor: z.string(),
