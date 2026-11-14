@@ -3,7 +3,7 @@ import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import request from "supertest";
 import type { RequestHandler } from "express";
 import { createApp } from "../src/app.js";
-import type { AppConfig } from "../src/config/env.js";
+import { loadConfig, type AppConfig } from "../src/config/env.js";
 import {
   type PullPage,
   type PulledChange,
@@ -31,6 +31,33 @@ const config: AppConfig = {
   SYNC_CURSOR_SECRET: "a-secure-test-secret-that-is-at-least-32-characters",
 };
 const teacherId = "9c32e58c-431c-4bd0-9c89-46a162299192";
+
+describe("environment configuration", () => {
+  const validEnvironment: NodeJS.ProcessEnv = {
+    NODE_ENV: "test",
+    PORT: "4000",
+    DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/teachaura",
+    SUPABASE_URL: "https://project.supabase.co",
+    CORS_ORIGINS: "http://localhost:3001,https://app.example.com",
+    SYNC_CURSOR_SECRET: "a-secure-test-secret-that-is-at-least-32-characters",
+  };
+
+  it("parses valid settings and rejects malformed database and CORS values", () => {
+    expect(loadConfig(validEnvironment)).toMatchObject({
+      PORT: 4000,
+      CORS_ORIGINS: ["http://localhost:3001", "https://app.example.com"],
+    });
+    expect(() =>
+      loadConfig({
+        ...validEnvironment,
+        DATABASE_URL: "https://db.example.com",
+      }),
+    ).toThrow("Invalid environment configuration");
+    expect(() => loadConfig({ ...validEnvironment, CORS_ORIGINS: "" })).toThrow(
+      "Invalid environment configuration",
+    );
+  });
+});
 
 class MemorySyncRepository implements SyncRepository {
   private readonly receipts = new Map<string, PushResult>();
@@ -189,6 +216,11 @@ describe("API routes", () => {
   it("keeps health public and protects API routes", async () => {
     const { app } = makeApp();
     await request(app).get("/health").expect(200, { status: "ok" });
+    await request(app)
+      .get("/not-found")
+      .expect(404, {
+        error: { code: "NOT_FOUND", message: "Route not found" },
+      });
 
     const protectedApp = createApp({
       config,
@@ -216,6 +248,16 @@ describe("API routes", () => {
       school_id: null,
     });
     expect(teachers.getOrCreateProfile).toHaveBeenCalledWith(teacherId);
+  });
+
+  it("serves generated OpenAPI metadata behind authentication", async () => {
+    const { app } = makeApp();
+    const response = await request(app).get("/api/v1/openapi.json").expect(200);
+    expect(response.body.paths).toHaveProperty("/api/v1/sync/push");
+    expect(response.body.components.securitySchemes.BearerAuth).toMatchObject({
+      type: "http",
+      scheme: "bearer",
+    });
   });
 
   it("accepts, idempotently replays, conflicts and soft-deletes class changes", async () => {
@@ -288,10 +330,14 @@ describe("API routes", () => {
 
   it("validates push batches and binds pull cursors to their teacher", async () => {
     const { app } = makeApp();
-    await request(app)
+    const invalidChange = await request(app)
       .post("/api/v1/sync/push")
       .send({ changes: [{ operation: "upsert" }] })
-      .expect(400);
+      .expect(200);
+    expect(invalidChange.body.results[0]).toMatchObject({
+      status: "rejected",
+      reason: "invalid_change",
+    });
 
     const pull = await request(app).get("/api/v1/sync/pull").expect(200);
     expect(pull.body).toMatchObject({ changes: [], has_more: false });

@@ -6,7 +6,7 @@ The first sync slice supports the `classes` entity only. Every request is authen
 
 `POST /api/v1/sync/push`
 
-Send 1-100 changes in outbox order. `change_id` is a client-generated UUID and idempotency key. For a new class, use `base_version: 0`; each accepted write increments the server-owned version. Timestamps, owner, and version are assigned by the server. An invalid item is reported as a per-item rejection and does not prevent later valid items in the batch from being processed. Top-level payload errors (including an empty or oversized batch) return HTTP 400.
+Send 1-100 changes in outbox order. `change_id` is a client-generated UUID and idempotency key. For a new class, use `base_version: 0`; each accepted write increments the server-owned version. Timestamps, owner, and version are assigned by the server. An invalid item is reported as a per-item rejection and does not prevent later valid items in the batch from being processed. Empty or oversized batches return HTTP 400; request bodies over the configured size limit return HTTP 413.
 
 ```json
 {
@@ -31,7 +31,7 @@ Send 1-100 changes in outbox order. `change_id` is a client-generated UUID and i
 }
 ```
 
-The response contains one result per change, in request order. Accepted results include the canonical record. If `base_version` is stale, the server applies the incoming change as the latest server-time write, increments the version, and includes a `conflict` object with the stale base, displaced version, and its snapshot. The sync log retains each accepted snapshot, so the displaced value remains retrievable. Rejected changes include a stable reason. Replaying a `change_id` returns its original result with `replayed: true`; rejected attempts are also recorded to prevent an idempotency key from later changing meaning.
+The response contains one result per change, in request order. Accepted results include the canonical record. If `base_version` is stale, the server applies the incoming change as the latest server-time write, increments the version, and includes a `conflict` object with the stale base, displaced version, and its snapshot. The sync log retains each accepted snapshot, so the displaced value remains retrievable. Domain-level rejections include a stable reason. Valid changes that reach persistence, whether accepted or rejected, are recorded so replaying a `change_id` returns the original result with `replayed: true`. Schema-invalid items are rejected before persistence and may be corrected and retried with the same idempotency key.
 
 ```json
 {
@@ -88,6 +88,6 @@ Clients should apply pull changes by record id and version, persist the returned
 
 ## Errors and ownership
 
-Errors use `{ "error": { "code": "...", "message": "...", "details": ... } }`. Request validation errors return HTTP 400; absent or invalid tokens return 401. Cross-teacher reads and writes are blocked by transaction-scoped PostgreSQL row-level security as well as repository ownership checks. Database operations set the teacher context only from the verified token subject.
+Errors use `{ "error": { "code": "...", "message": "...", "details": ... } }`. Request validation errors return HTTP 400; absent or invalid tokens return 401. Cross-teacher reads and writes are blocked by transaction-scoped PostgreSQL row-level security as well as repository ownership checks. Database operations set the teacher context only from the verified token subject. The deployed application database role must be non-superuser and `NOBYPASSRLS`; use a separate migration role for schema changes.
 
 Apply migrations with `npm run db:deploy` in deployed environments. The initial `classes` protocol does not sync subjects or other tables.

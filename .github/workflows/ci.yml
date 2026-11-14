@@ -37,6 +37,8 @@ jobs:
         run: |
           docker exec "${{ job.services.postgres.id }}" psql -U postgres -d teachaura -v ON_ERROR_STOP=1 -c "CREATE ROLE teachaura_app LOGIN PASSWORD 'app_password' NOSUPERUSER NOBYPASSRLS"
           docker exec "${{ job.services.postgres.id }}" psql -U postgres -d teachaura -v ON_ERROR_STOP=1 -c "GRANT USAGE ON SCHEMA public TO teachaura_app"
-          docker exec "${{ job.services.postgres.id }}" psql -U postgres -d teachaura -v ON_ERROR_STOP=1 -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO teachaura_app"
+          docker exec "${{ job.services.postgres.id }}" psql -U postgres -d teachaura -v ON_ERROR_STOP=1 -c "GRANT SELECT, INSERT, UPDATE ON teachers, classes TO teachaura_app"
+          docker exec "${{ job.services.postgres.id }}" psql -U postgres -d teachaura -v ON_ERROR_STOP=1 -c "GRANT SELECT, INSERT ON sync_changes TO teachaura_app"
           docker exec "${{ job.services.postgres.id }}" psql -U postgres -d teachaura -v ON_ERROR_STOP=1 -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO teachaura_app"
+          docker exec "${{ job.services.postgres.id }}" psql -U postgres -d teachaura -v ON_ERROR_STOP=1 -c 'GRANT USAGE ON TYPE "TeacherRole", "SyncEntity", "SyncOperation", "SyncStatus" TO teachaura_app'
       - run: npm run check

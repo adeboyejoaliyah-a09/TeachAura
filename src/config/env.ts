@@ -1,11 +1,29 @@
 import { z } from "zod";
 
+const corsOriginSchema = z
+  .string()
+  .url()
+  .refine((value) => {
+    const url = new URL(value);
+    return (
+      (url.protocol === "http:" || url.protocol === "https:") &&
+      url.origin === value
+    );
+  }, "CORS entries must be HTTP(S) origins without a path");
+
 const envSchema = z.object({
   NODE_ENV: z
     .enum(["development", "test", "production"])
     .default("development"),
   PORT: z.coerce.number().int().min(1).max(65535).default(3000),
-  DATABASE_URL: z.string().url(),
+  DATABASE_URL: z
+    .string()
+    .url()
+    .refine(
+      (value) =>
+        value.startsWith("postgres://") || value.startsWith("postgresql://"),
+      "DATABASE_URL must use the PostgreSQL protocol",
+    ),
   SUPABASE_URL: z.string().url(),
   CORS_ORIGINS: z
     .string()
@@ -15,7 +33,8 @@ const envSchema = z.object({
         .split(",")
         .map((origin) => origin.trim())
         .filter(Boolean),
-    ),
+    )
+    .pipe(z.array(corsOriginSchema).min(1)),
   SYNC_CURSOR_SECRET: z.string().min(32),
 });
 

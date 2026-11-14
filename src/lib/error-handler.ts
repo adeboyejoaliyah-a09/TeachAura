@@ -9,16 +9,29 @@ export const errorHandler: ErrorRequestHandler = (
   next,
 ) => {
   void next;
-  if (
+  const errorType =
     typeof error === "object" &&
     error !== null &&
     "type" in error &&
-    error.type === "entity.parse.failed"
-  ) {
+    typeof error.type === "string"
+      ? error.type
+      : undefined;
+
+  if (errorType === "entity.parse.failed") {
     response.status(400).json({
       error: {
         code: "INVALID_JSON",
         message: "Request body must be valid JSON",
+      },
+    });
+    return;
+  }
+
+  if (errorType === "entity.too.large") {
+    response.status(413).json({
+      error: {
+        code: "PAYLOAD_TOO_LARGE",
+        message: "Request body exceeds the allowed size",
       },
     });
     return;

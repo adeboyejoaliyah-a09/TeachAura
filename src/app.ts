@@ -116,6 +116,11 @@ export function createApp(dependencies: AppDependencies) {
     createSyncRouter(dependencies.sync, dependencies.config.SYNC_CURSOR_SECRET),
   );
   app.use("/api/v1", api);
+  app.use((_request, response) => {
+    response.status(404).json({
+      error: { code: "NOT_FOUND", message: "Route not found" },
+    });
+  });
   app.use(errorHandler);
 
   return app;
