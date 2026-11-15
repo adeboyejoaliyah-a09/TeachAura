@@ -93,34 +93,34 @@ All AI-generated educational material must be reviewable by teachers before use,
 
 ## Roadmap
 
-- [ ] **Phase 1, Foundation:** authentication, dashboard, class and subject management, syllabus upload, timetable configuration
-- [ ] **Phase 2, AI intelligence:** syllabus analysis, curriculum organisation, weekly lesson planning, lesson note and students' short note generation
-- [ ] **Phase 3, Teaching experience:** Guided Teaching Mode, session timers, teaching instructions, interactive lesson controls
-- [ ] **Phase 4, Assessment:** question, assignment and classwork generators, answer keys, marking schemes
-- [ ] **Phase 5, Progress and engagement:** weekly progress, syllabus coverage, outstanding lesson tracking, streaks, badges
+- [x] **Phase 1, Foundation:** authentication, dashboard, class and subject management, timetable configuration
+- [x] **Phase 2, AI intelligence:** syllabus analysis, curriculum organisation, weekly lesson planning, lesson note and students' short note generation
+- [x] **Phase 3, Teaching experience:** Guided Teaching Mode, session timers, teaching instructions, interactive lesson controls
+- [x] **Phase 4, Assessment:** question, assignment and classwork generators, answer keys, marking schemes
+- [x] **Phase 5, Progress and engagement:** weekly progress, syllabus coverage, school administrator supervision, teacher performance monitoring, streaks, badges
 
 ---
 
 ## Getting Started
 
-> Replace the commands below with your actual project setup as it develops.
+Run the interactive TeachAura frontend:
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/teachaura.git
+git clone https://github.com/adeboyejoaliyah-a09/TeachAura.git
 cd teachaura
 
-# Install dependencies
-npm install
-
-# Configure environment variables
-cp .env.example .env.local
-
-# Run the development server
+# Run the frontend development server
+npm start
+# or
 npm run dev
+
+# Run automated smoke and verification tests
+npm test
 ```
 
-You will need accounts and keys for the services in the stack, such as Supabase and your chosen LLM provider. List the required variables in `.env.example`.
+The application will be live at `http://localhost:3000`. You can also open `index.html` directly in any modern web browser.
+
 
 ---
 

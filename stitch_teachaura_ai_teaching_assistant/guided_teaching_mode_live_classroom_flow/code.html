@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"error-container":"#ffdad6","primary-fixed":"#9cf2e8","tertiary-fixed-dim":"#fabc45","on-surface-variant":"#3e4947","on-error":"#ffffff","inverse-primary":"#80d5cb","on-background":"#0d1c2f","background":"#f8f9ff","secondary-fixed-dim":"#9ad1cb","surface-container-high":"#dde9ff","surface-container-highest":"#d5e3fd","tertiary":"#6c4b00","outline-variant":"#bdc9c6","surface-container-lowest":"#ffffff","surface":"#f8f9ff","error":"#ba1a1a","surface-dim":"#ccdbf4","outline":"#6e7977","tertiary-fixed":"#ffdea9","on-tertiary-container":"#ffe7c4","surface-bright":"#f8f9ff","inverse-surface":"#233144","secondary-fixed":"#b5ede7","on-tertiary-fixed":"#271900","surface-variant":"#d5e3fd","on-secondary-fixed":"#00201e","secondary":"#316763","on-secondary-fixed-variant":"#144f4b","on-surface":"#0d1c2f","on-error-container":"#93000a","on-tertiary":"#ffffff","surface-container-low":"#eff4ff","secondary-container":"#b5ede7","primary":"#005c55","inverse-on-surface":"#ebf1ff","on-tertiary-fixed-variant":"#5f4100","primary-container":"#0f766e","on-primary-container":"#a3faef","on-secondary-container":"#376d69","primary-fixed-dim":"#80d5cb","on-primary-fixed":"#00201d","surface-container":"#e6eeff","on-primary-fixed-variant":"#00504a","on-secondary":"#ffffff","surface-tint":"#006a63","on-primary":"#ffffff","tertiary-container":"#8b6200"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-lg":"1.5rem","space-xl":"2rem","space-md":"1rem","gutter-mobile":"1rem","space-xs":"0.25rem",margin:"2rem","margin-mobile":"1rem",gutter:"1.5rem"},fontFamily:{"body-md":["Inter"],"label-sm":["Inter"],"body-lg":["Inter"],"headline-xl":["DM Sans"],"headline-xl-mobile":["DM Sans"],"headline-lg":["DM Sans"],"body-sm":["Inter"],"headline-lg-mobile":["DM Sans"],"headline-md":["DM Sans"],"label-md":["Inter"],"headline-sm":["DM Sans"],"title-md":["Inter"]},fontSize:{"body-md":["15px",{lineHeight:"22px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.02em",fontWeight:"600"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-xl-mobile":["30px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-lg-mobile":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"label-md":["13px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"title-md":["16px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><img alt="TeachAura Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrCSulcL6cPlXXXRy4AZ5KhJ8RSdJXyDahIDyNQX72-3gqyCVmNhoL2UyvOewnvl3ZGepP0cCaChCgY9xQ4zEFEHmPL9g103oenBgfz5yhk0xvujGzQVo6S4Tu6kasngxGKWqRFKtugMa8_kje6OUA3SnM7Cpq-qqGge5ZU3smwJwvQSNzsftytHG4y13yEb6ivRKnnKJmV7U_3Yyo87w6NYV21PLZXnXZGrc8tFiKY"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary font-bold leading-none tracking-tight">TeachAura</span><span class="font-label-sm text-label-sm text-tertiary-container uppercase tracking-wider font-semibold">The Teaching Flow</span></div></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs italic">Teach Smarter. Prepare Better.</p></div><div class="px-space-md py-space-sm"><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-md text-body-md">Overview</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="lesson-preparation" href="#"><span class="material-symbols-outlined text-[20px]">auto_awesome</span><span class="font-body-md text-body-md">Lesson Preparation</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm" data-path="guided-teaching-mode" href="#"><span class="material-symbols-outlined text-[20px]">slideshow</span><span class="font-body-md text-body-md">Guided Teaching Mode</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="assessment-studio" href="#"><span class="material-symbols-outlined text-[20px]">quiz</span><span class="font-body-md text-body-md">Assessment Studio</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="weekly-planner" href="#"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span class="font-body-md text-body-md">Weekly Planner &amp; Syllabus</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="achievements-and-streaks" href="#"><span class="material-symbols-outlined text-[20px]">military_tech</span><span class="font-body-md text-body-md">Achievements &amp; Streaks</span></a></nav></div></div><div class="p-space-md m-space-md bg-surface-container-low rounded-xl flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">NERDC Syllabus</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">Active</span></div><p class="font-body-sm text-body-sm text-on-surface">Nigerian Curriculum aligned for Basic Sci &amp; Biology.</p></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="material-symbols-outlined text-[18px] text-primary">account_balance</span><span class="font-body-sm text-body-sm text-on-surface font-medium truncate max-w-md">Federal Government College, Lagos | Term 2 (2024/2025) - Week 6</span></div><div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container/10"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-primary font-semibold">Live Class Ready</span></div></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-lg font-title-md text-title-md transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Quick AI Prep</span></button><div class="h-6 w-px bg-outline-variant/30 hidden sm:block"></div><div class="flex items-center gap-space-sm"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvHZjNBLVSEXRdIxvCNcLfa1VkHAdj-IF5x8U2q6AvqUx2u-ooGBWj9L_rs1Y6oaDmcVg_w_brJLcfQ9jCwTZO8WIwVT1f9rnM3bJM3HYd-Gs7cYEwprwmm3SSSJldHGxhRelJzQQ0KJcKNGqmPfYYG1u_JYcqD40nRl4F6SG5U4HRXRl-DVSgLU_XvVvBNqJtQh5RXd2e1xzzKCQNqVgs6F1p_fMwWRyZR-69jZ0"/><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface-container-lowest"></span></div><div class="flex flex-col leading-tight"><span class="font-label-md text-label-md text-on-surface font-semibold">Mrs. Adebayo, F.</span><span class="font-label-sm text-label-sm text-on-surface-variant">Senior Teacher (JSS 2 - SS 2)</span></div></div></div></header><main class="w-full pt-16 bg-surface px-space-lg min-h-screen"><div class="flex flex-col w-full pb-32">
+<!-- Dynamic Ambient Backing Glow -->
+<div class="relative w-full">
+<div class="absolute -top-12 left-1/4 w-96 h-96 bg-primary-fixed/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-10 right-10 w-72 h-72 bg-tertiary-fixed/20 rounded-full blur-2xl pointer-events-none -z-10"></div>
+</div>
+<!-- Top Hero Dynamic Classroom Control Bar -->
+<section class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-lg mb-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg">
+<!-- Lesson Context & Status Tag -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+            Live Stage Runner
+          </span>
+<span class="text-on-surface-variant font-label-md text-label-md">JSS 2A • Biology • Federal Scheme Week 6</span>
+<span class="px-2.5 py-0.5 bg-surface-container rounded-full text-primary font-label-sm text-label-sm font-semibold">NERDC Code: BIO-02-WK6</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">The Human Respiratory System</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+          Total Target: 45:00 Mins • Elapsed: <strong class="text-on-surface font-semibold ml-0.5">18:24</strong>
+</p>
+</div>
+<!-- High-Legibility Big Screen Stage Timer Tile -->
+<div class="flex items-center gap-space-lg bg-surface-container-low px-space-xl py-space-md rounded-xl shadow-inner">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+            Stage 2 Remaining
+          </span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight tabular-nums" id="stageTimerDisplay">06:36</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">/ 15:00</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-right">Lesson left: <strong class="text-on-surface font-semibold">26:36</strong></span>
+</div>
+<div class="h-12 w-px bg-outline-variant/40 hidden sm:block"></div>
+<!-- Timer Stage Action Buttons -->
+<div class="flex items-center gap-space-xs">
+<button class="w-11 h-11 rounded-lg bg-primary hover:bg-primary-container text-on-primary flex items-center justify-center transition-all shadow-sm group" id="toggleTimerBtn" title="Pause / Resume" type="button">
+<span class="material-symbols-outlined text-[24px]" id="timerIcon">pause</span>
+</button>
+<button class="flex items-center gap-1 px-3 h-11 bg-surface-container-lowest hover:bg-surface-container text-on-surface font-title-md text-title-md rounded-lg shadow-sm transition-all text-xs font-semibold" id="quickExtendBtn" title="Extend Stage by 2 Minutes" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">more_time</span>
+<span>+2m</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md h-11 bg-surface-container-highest hover:bg-surface-container text-on-surface font-title-md text-title-md rounded-lg shadow-sm transition-all text-sm font-semibold" id="nextStageBtn" title="Move to Stage 3" type="button">
+<span>Next Stage</span>
+<span class="material-symbols-outlined text-[18px]">skip_next</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Classroom Mode Toggles Strip -->
+<div class="mt-space-md pt-space-md flex flex-wrap items-center justify-between gap-space-md bg-surface-container-lowest">
+<div class="flex items-center gap-space-md flex-wrap">
+<!-- Blackboard Contrast Mode -->
+<button class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface transition-all font-label-md text-label-md" id="blackboardToggle" type="button">
+<span class="material-symbols-outlined text-[18px]">contrast</span>
+<span>Blackboard Mode</span>
+</button>
+<!-- Projector View Hide Notes -->
+<button class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface transition-all font-label-md text-label-md" id="projectorToggle" type="button">
+<span class="material-symbols-outlined text-[18px]">screen_share</span>
+<span>Projector Mode (Clean)</span>
+</button>
+<!-- Sound Chime Toggle -->
+<button class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md font-semibold" id="chimeToggle" type="button">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+<span>Chime Alert: ON</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 rounded-lg bg-error-container hover:bg-error/20 text-on-error-container font-label-md text-label-md font-semibold transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Mark Lesson Completed</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Interactive 5-Stage Stepper Ribbon -->
+<section class="w-full mb-space-lg">
+<div class="grid grid-cols-1 md:grid-cols-5 gap-space-sm">
+<!-- Stage 1 (Done) -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-1 transition-all opacity-85">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Stage 1</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface line-clamp-1 font-semibold">1. Introduction</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-1">
+<span>5 Mins planned</span>
+<span class="text-secondary font-medium">4:42 used</span>
+</div>
+<div class="w-full bg-outline-variant/30 h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-secondary h-full w-full"></div>
+</div>
+</div>
+<!-- Stage 2 (Current / Active) -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-1 relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            Stage 2 • Active
+          </span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold">Running</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface font-bold line-clamp-1">2. Concept Explanation</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-1">
+<span class="font-semibold text-primary">8:24 / 15:00</span>
+<span>56%</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[56%] transition-all duration-500"></div>
+</div>
+</div>
+<!-- Stage 3 (Upcoming) -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-1 opacity-70 hover:opacity-100 transition-all cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Stage 3</span>
+<span class="material-symbols-outlined text-[18px] text-outline">hourglass_empty</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface line-clamp-1 font-semibold">3. Class Activities</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-1">
+<span>Bell lung demo</span>
+<span>10 Mins</span>
+</div>
+<div class="w-full bg-outline-variant/20 h-1.5 rounded-full mt-1"></div>
+</div>
+<!-- Stage 4 (Upcoming) -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-1 opacity-70 hover:opacity-100 transition-all cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Stage 4</span>
+<span class="material-symbols-outlined text-[18px] text-outline">quiz</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface line-clamp-1 font-semibold">4. Evaluation</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-1">
+<span>3 Formative Qs</span>
+<span>10 Mins</span>
+</div>
+<div class="w-full bg-outline-variant/20 h-1.5 rounded-full mt-1"></div>
+</div>
+<!-- Stage 5 (Upcoming) -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-1 opacity-70 hover:opacity-100 transition-all cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Stage 5</span>
+<span class="material-symbols-outlined text-[18px] text-outline">assignment</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface line-clamp-1 font-semibold">5. Conclusion</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-1">
+<span>Note taking &amp; H/W</span>
+<span>5 Mins</span>
+</div>
+<div class="w-full bg-outline-variant/20 h-1.5 rounded-full mt-1"></div>
+</div>
+</div>
+</section>
+<!-- Main Active Classroom Split Stage Display -->
+<div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT 7 COLS: Pedagogical Guidance, Step-by-Step, and Blackboard Board Slate -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Current Stage Focus Banner -->
+<div class="p-space-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-1 bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm rounded uppercase font-bold tracking-wider">
+            Current Stage Learning Target
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">psychology</span>
+            Bloom's Level: Comprehension
+          </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">
+          Explain the mechanism of inhalation and exhalation using the thoracic ribcage &amp; diaphragm movement model.
+        </h2>
+</div>
+<!-- Guided Instructional Steps Timeline -->
+<div class="p-space-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">record_voice_over</span>
+<span class="font-title-md text-title-md text-on-surface font-bold">Teacher Prompts &amp; Choreography</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Step 2 of 3 in progress</span>
+</div>
+<!-- Step 1 (Completed) -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-start gap-space-md">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Step 1: Anatomy Orientation</span>
+<span class="px-2 py-0.5 bg-surface-container rounded-full text-on-surface-variant font-label-sm text-label-sm">Done</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+              Point to the trachea and bronchi on the classroom poster chart. Ask students to place their flat hands firmly on the lower edge of their ribcage.
+            </p>
+</div>
+</div>
+<!-- Step 2 (Active Now) -->
+<div class="p-space-md rounded-xl bg-secondary-container/30 shadow-sm flex items-start gap-space-md">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 shadow-sm">
+            2
+          </div>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between flex-wrap gap-1">
+<span class="font-title-md text-title-md text-on-surface font-bold">Step 2: Synchronized Kinesthetic Breathing</span>
+<span class="px-2 py-0.5 bg-primary text-on-primary rounded font-label-sm text-label-sm font-semibold animate-pulse">Now Teaching</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium mt-1 leading-relaxed">
+              Count: <span class="text-primary font-bold">“Breathe in... 1, 2, 3”</span>. Guide synchronized deep breath: Notice how ribs move upwards and outwards while chest volume expands. Have them release: ribs descend, diaphragm relaxes up.
+            </p>
+<!-- Large Class Crowded Room Pro Tip -->
+<div class="mt-space-sm p-space-sm bg-tertiary-container/15 rounded-lg flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0 mt-0.5">lightbulb</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+<strong class="text-tertiary font-semibold">Pro-Tip for Crowded Classrooms:</strong> Have students turn to their bench partner on the wooden three-seater desks so every child can observe the chest movement profile sideways without standing up.
+              </p>
+</div>
+</div>
+</div>
+<!-- Step 3 (Upcoming) -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-start gap-space-md opacity-75">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+            3
+          </div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Step 3: Physical Analogy (Boyle's Law simplified)</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+              Demonstrate the plastic bottle lung model (or draw syringe analogy) to show how pressure decreases when cavity volume increases.
+            </p>
+</div>
+</div>
+</div>
+<!-- Chalkboard Slate: Key Board Notes (High Contrast Toggle Target) -->
+<div class="p-space-lg rounded-xl bg-inverse-surface text-inverse-on-surface shadow-md flex flex-col gap-space-md" id="boardSlate">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]">draw</span>
+<span class="font-title-md text-title-md text-inverse-on-surface font-bold tracking-wide uppercase">Blackboard Summary • Copy into Notes</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-lowest/15 text-primary-fixed font-mono">Chalkboard View</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Inhalation Box -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest/10 flex flex-col gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-primary-fixed font-bold tracking-tight">1. INHALATION (Active)</span>
+<ul class="font-body-sm text-body-sm text-inverse-on-surface/90 space-y-1.5 list-disc list-inside">
+<li>External intercostal muscles contract</li>
+<li>Ribs swing <span class="text-tertiary-fixed font-semibold">UP and OUT</span></li>
+<li>Diaphragm contracts &amp; <span class="text-primary-fixed font-semibold">flattens downward</span></li>
+<li>Thoracic cavity expands → Air pressure drops</li>
+<li>Atmospheric air rushes into lungs</li>
+</ul>
+</div>
+<!-- Exhalation Box -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest/10 flex flex-col gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-tertiary-fixed font-bold tracking-tight">2. EXHALATION (Passive)</span>
+<ul class="font-body-sm text-body-sm text-inverse-on-surface/90 space-y-1.5 list-disc list-inside">
+<li>External intercostals relax</li>
+<li>Ribs drop <span class="text-tertiary-fixed font-semibold">DOWN and IN</span></li>
+<li>Diaphragm relaxes into <span class="text-primary-fixed font-semibold">dome shape</span></li>
+<li>Thoracic cavity shrinks → Air pressure rises</li>
+<li>Air is forced outward through trachea</li>
+</ul>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-body-sm font-body-sm text-inverse-on-surface/70">
+<span>Teacher hint: Write these 2 parallel columns on blackboard right wing.</span>
+<button class="text-primary-fixed hover:underline text-xs font-semibold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span> Copy to Classroom Screen
+          </button>
+</div>
+</div>
+</div>
+<!-- RIGHT 5 COLS: Interactive Student Engagement, Checking for Understanding, Live Poll & Image Hook -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Scientific Reference Diagram Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="relative h-48 w-full bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A clean, scientific, educational textbook medical illustration showing the cross-section of the human respiratory system during inhalation and exhalation, contrasting the diaphragm flattening versus dome position, colored in teal and warm ochre against a crisp white academic backdrop, with bold English anatomical labels for trachea, lungs, ribs, and diaphragm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYUJQZ5oa_Yn1I2BHfMRXNIwAxWdFpDHmjkJOoYBmYYvHRwzIo1LaC_kBB73DQnl4sU-LrgPYOsfB4UQTgQkXQew5ybI4FujQI-VlRvPl3g7PiYpxEsXFMoXUb6IaInfwOzGKv8AU-IYu8EBcdshdQiU28K45jRXjj1QZSVUGfFaCH9olCdYrJUWHfNVDa_6ZCiKLvPztrLl8UihLu1cPs2V4Q1TU2evTFGjHlQ44"/>
+<div class="absolute bottom-2 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded text-xs font-semibold text-primary">
+            Fig 4.2: Diaphragmatic excursion during breathing
+          </div>
+<button class="absolute top-2 right-2 p-1.5 bg-surface-container-lowest/80 rounded-lg hover:bg-surface-container-lowest text-on-surface shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span>
+</button>
+</div>
+<div class="p-space-md flex items-center justify-between bg-surface-container-lowest">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Ready for Projector Broadcast</span>
+<button class="px-3 py-1 bg-surface-container hover:bg-surface-container-high text-primary rounded-lg font-label-md text-label-md font-semibold transition-all" type="button">
+            Present Fullscreen
+          </button>
+</div>
+</div>
+<!-- Interactive Oral Check-in Card (AI Misconception Buster) -->
+<div class="p-space-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[20px]">psychology_alt</span>
+<span class="font-title-md text-title-md text-on-surface font-bold">Live Oral Check-in</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">Critical Thinking</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-tertiary uppercase font-bold tracking-wider">Teacher Question to Call Out</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold">
+            “If a person's phrenic nerve is damaged and the diaphragm cannot contract or flatten, what immediately happens to their breathing?”
+          </p>
+</div>
+<!-- Accordion Solution & Misconceptions -->
+<div class="flex flex-col gap-2">
+<button class="w-full py-2 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-title-md text-title-md flex items-center justify-between transition-all text-sm font-semibold" id="toggleAiAnswerBtn" type="button">
+<span class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+              Show Answer &amp; Common Student Traps
+            </span>
+<span class="material-symbols-outlined text-[18px] transition-transform" id="accordionArrow">expand_more</span>
+</button>
+<div class="hidden p-space-md bg-secondary-container/20 rounded-xl flex flex-col gap-space-xs text-body-sm font-body-sm" id="aiAnswerContent">
+<div class="font-semibold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+              Model Answer for Class:
+            </div>
+<p class="text-on-surface">
+              They cannot create negative intra-thoracic pressure naturally. The thoracic cavity cannot expand downward, leading to severe shortness of breath or respiratory failure unless artificial ventilation is provided.
+            </p>
+<div class="mt-2 pt-2 border-t border-outline-variant/30 text-xs text-on-surface-variant">
+<strong class="text-error font-semibold">Common Nigerian Student Misconception:</strong> Students often assume lungs are active pumps that inflate like balloons on their own; remind them the lungs are passive sponge tissue moved by surrounding muscles!
+            </div>
+</div>
+</div>
+<!-- Cold Call Picker Widget -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container rounded-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">shuffle</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Random Cold Call:</span>
+<span class="font-label-md text-label-md px-2 py-0.5 bg-surface-container-lowest rounded text-primary font-bold shadow-sm" id="randomStudentDisplay">Chinedu Okafor</span>
+</div>
+<button class="text-xs font-semibold text-secondary hover:text-primary transition-all" id="spinStudentBtn" type="button">
+            Pick Next
+          </button>
+</div>
+</div>
+<!-- Quick Interactive Poll & Pacing Guard -->
+<div class="p-space-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-surface font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">how_to_vote</span>
+            Quick Room Pulse Check
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10 Secs</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Prompt: “Raise hands: Who can clearly feel their abdomen move outwards during slow inhalation?”
+        </p>
+<!-- Response Bar Visual -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface font-semibold">
+<span>Room Feedback Confidence</span>
+<span>31 / 38 Responded (~82%)</span>
+</div>
+<div class="w-full bg-surface-container h-2.5 rounded-full overflow-hidden flex">
+<div class="bg-primary h-full w-[82%]"></div>
+<div class="bg-tertiary-fixed-dim h-full w-[18%]"></div>
+</div>
+</div>
+<!-- Quick Adjustment Action Pill -->
+<div class="mt-space-xs p-space-sm rounded-lg bg-tertiary-fixed/30 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Concept taking longer to grasp?</span>
+<button class="px-2.5 py-1 bg-surface-container-lowest hover:bg-surface-container text-tertiary font-label-sm text-label-sm font-bold rounded shadow-sm transition-all flex items-center gap-1" id="addThreeMinsBtn" type="button">
+<span class="material-symbols-outlined text-[14px]">timer_10</span>
+            +3 Mins Ext
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Persistent Classroom Delivery Drawer Dock (Floating Bottom Bar) -->
+<aside class="fixed bottom-4 left-80 right-8 z-40 bg-surface-container-lowest/95 backdrop-blur-xl rounded-2xl shadow-xl px-space-lg py-space-md">
+<div class="flex items-center justify-between gap-space-md flex-wrap">
+<!-- Left: Roster Quick Tally -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Attendance</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">38 / 42 Present <span class="text-xs font-normal text-on-surface-variant">(4 Absent)</span></span>
+</div>
+</div>
+<div class="h-6 w-px bg-outline-variant/30 hidden md:block"></div>
+<!-- Student Short Note Preview Drawer Button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-all" id="openNotesDrawerBtn" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">menu_book</span>
+<span>Copy-Note Preview</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</button>
+</div>
+<!-- Center: Stage Quick Navigator Icons -->
+<div class="hidden xl:flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-xl">
+<button class="px-2.5 py-1 rounded text-xs font-semibold text-secondary hover:bg-surface-container">1. Intro</button>
+<span class="text-outline-variant">•</span>
+<button class="px-2.5 py-1 rounded text-xs font-bold text-primary bg-surface-container-lowest shadow-sm">2. Concept</button>
+<span class="text-outline-variant">•</span>
+<button class="px-2.5 py-1 rounded text-xs font-semibold text-on-surface-variant hover:bg-surface-container">3. Activity</button>
+<span class="text-outline-variant">•</span>
+<button class="px-2.5 py-1 rounded text-xs font-semibold text-on-surface-variant hover:bg-surface-container">4. Eval</button>
+<span class="text-outline-variant">•</span>
+<button class="px-2.5 py-1 rounded text-xs font-semibold text-on-surface-variant hover:bg-surface-container">5. Wrap</button>
+</div>
+<!-- Right: SOS Quick AI Assistant & Stage Skip -->
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed hover:bg-tertiary-fixed-dim font-title-md text-title-md transition-all shadow-sm text-xs font-bold" id="sosAssistBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>SOS: Simplify Explanation</span>
+</button>
+<button class="flex items-center gap-1 px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md transition-all shadow-sm text-xs font-bold" type="button">
+<span>Complete Stage 2</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Modal / Floating Drawer for Copy-Note Preview (Initially hidden) -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4" id="notesDrawerModal">
+<div class="w-full max-w-xl bg-surface-container-lowest rounded-2xl shadow-2xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">edit_note</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Student Notebook Summary (Week 6)</h3>
+</div>
+<button class="p-1 rounded-full hover:bg-surface-container text-on-surface-variant" id="closeNotesDrawerBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low font-body-sm text-body-sm text-on-surface space-y-2 max-h-80 overflow-y-auto">
+<p class="font-bold text-primary">Topic: Mechanism of Respiration</p>
+<p>1. Respiration involves taking in oxygen (inhalation) and giving out carbon dioxide (exhalation).</p>
+<p>2. During Inhalation: Diaphragm flattens, ribs move up/out, chest volume increases, lungs pull in air.</p>
+<p>3. During Exhalation: Diaphragm curves upwards, ribs move down/in, chest volume decreases, air is pushed out.</p>
+<p class="text-tertiary font-semibold">Diagram Assignment: Draw Fig 4.2 in your Basic Science exercise books for Thursday inspection.</p>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-2">
+<button class="px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold" id="closeNotesDrawerBtn2" type="button">
+          Dismiss
+        </button>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+<span>Send to School Printer</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Interaction Behavior -->
+<script>
+  (function() {
+    // Timer State
+    let secondsLeft = 396; // 6 mins 36 seconds
+    let isPaused = false;
+    const timerDisplay = document.getElementById('stageTimerDisplay');
+    const toggleTimerBtn = document.getElementById('toggleTimerBtn');
+    const timerIcon = document.getElementById('timerIcon');
+    const quickExtendBtn = document.getElementById('quickExtendBtn');
+    const addThreeMinsBtn = document.getElementById('addThreeMinsBtn');
+
+    function formatTime(totalSecs) {
+      const m = Math.floor(totalSecs / 60);
+      const s = totalSecs % 60;
+      return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    const timerInterval = setInterval(() => {
+      if (!isPaused && secondsLeft > 0) {
+        secondsLeft--;
+        if (timerDisplay) {
+          timerDisplay.textContent = formatTime(secondsLeft);
+        }
+      }
+    }, 1000);
+
+    if (toggleTimerBtn) {
+      toggleTimerBtn.addEventListener('click', () => {
+        isPaused = !isPaused;
+        if (timerIcon) {
+          timerIcon.textContent = isPaused ? 'play_arrow' : 'pause';
+        }
+        toggleTimerBtn.classList.toggle('bg-tertiary', isPaused);
+        toggleTimerBtn.classList.toggle('bg-primary', !isPaused);
+      });
+    }
+
+    function addMinutes(mins) {
+      secondsLeft += mins * 60;
+      if (timerDisplay) {
+        timerDisplay.textContent = formatTime(secondsLeft);
+      }
+    }
+
+    if (quickExtendBtn) {
+      quickExtendBtn.addEventListener('click', () => addMinutes(2));
+    }
+    if (addThreeMinsBtn) {
+      addThreeMinsBtn.addEventListener('click', () => addMinutes(3));
+    }
+
+    // Toggle AI Answer Accordion
+    const toggleAiAnswerBtn = document.getElementById('toggleAiAnswerBtn');
+    const aiAnswerContent = document.getElementById('aiAnswerContent');
+    const accordionArrow = document.getElementById('accordionArrow');
+    if (toggleAiAnswerBtn && aiAnswerContent) {
+      toggleAiAnswerBtn.addEventListener('click', () => {
+        const isHidden = aiAnswerContent.classList.toggle('hidden');
+        if (accordionArrow) {
+          accordionArrow.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+      });
+    }
+
+    // Random Cold Call Spinner
+    const students = [
+      'Chinedu Okafor', 'Amina Bello', 'Olusegun Adeleke', 
+      'Blessing Eze', 'Fatima Aliyu', 'Emeka Nwosu', 
+      'Titi Babatunde', 'Kelechi Madu'
+    ];
+    const spinStudentBtn = document.getElementById('spinStudentBtn');
+    const randomStudentDisplay = document.getElementById('randomStudentDisplay');
+    if (spinStudentBtn && randomStudentDisplay) {
+      spinStudentBtn.addEventListener('click', () => {
+        const next = students[Math.floor(Math.random() * students.length)];
+        randomStudentDisplay.textContent = next;
+      });
+    }
+
+    // Classroom Mode Toggles
+    const blackboardToggle = document.getElementById('blackboardToggle');
+    const boardSlate = document.getElementById('boardSlate');
+    if (blackboardToggle && boardSlate) {
+      blackboardToggle.addEventListener('click', () => {
+        const isHighlighted = boardSlate.classList.toggle('ring-4');
+        boardSlate.classList.toggle('ring-primary-fixed', isHighlighted);
+        blackboardToggle.classList.toggle('bg-primary-container', isHighlighted);
+        blackboardToggle.classList.toggle('text-on-primary-container', isHighlighted);
+      });
+    }
+
+    const chimeToggle = document.getElementById('chimeToggle');
+    if (chimeToggle) {
+      chimeToggle.addEventListener('click', () => {
+        const isOff = chimeToggle.textContent.includes('OFF');
+        chimeToggle.innerHTML = isOff 
+          ? '<span class="material-symbols-outlined text-[18px]">notifications_active</span><span>Chime Alert: ON</span>'
+          : '<span class="material-symbols-outlined text-[18px]">notifications_off</span><span>Chime Alert: OFF</span>';
+        chimeToggle.classList.toggle('bg-surface-container', !isOff);
+        chimeToggle.classList.toggle('bg-primary-fixed', isOff);
+      });
+    }
+
+    // Notes Preview Modal
+    const openNotesDrawerBtn = document.getElementById('openNotesDrawerBtn');
+    const closeNotesDrawerBtn = document.getElementById('closeNotesDrawerBtn');
+    const closeNotesDrawerBtn2 = document.getElementById('closeNotesDrawerBtn2');
+    const notesDrawerModal = document.getElementById('notesDrawerModal');
+    if (openNotesDrawerBtn && notesDrawerModal) {
+      openNotesDrawerBtn.addEventListener('click', () => notesDrawerModal.classList.remove('hidden'));
+    }
+    if (closeNotesDrawerBtn && notesDrawerModal) {
+      closeNotesDrawerBtn.addEventListener('click', () => notesDrawerModal.classList.add('hidden'));
+    }
+    if (closeNotesDrawerBtn2 && notesDrawerModal) {
+      closeNotesDrawerBtn2.addEventListener('click', () => notesDrawerModal.classList.add('hidden'));
+    }
+  })();
+</script></main></div></body></html>

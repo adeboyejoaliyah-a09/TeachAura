@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_dashboard" name="shell-type"/>
+  <title>TeachAura PRD Summary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#005c55",
+            "primary-container": "#0f766e",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#a3faef",
+            "secondary": "#316763",
+            "secondary-container": "#b5ede7",
+            "on-secondary-container": "#376d69",
+            "tertiary": "#6c4b00",
+            "tertiary-container": "#8b6200",
+            "tertiary-fixed": "#ffdea9",
+            "surface": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e6eeff",
+            "on-surface": "#0d1c2f",
+            "on-surface-variant": "#3e4947",
+            "outline": "#6e7977",
+            "outline-variant": "#bdc9c6"
+          },
+          fontFamily: {
+            "headline": ["DM Sans", "sans-serif"],
+            "body": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+  <div class="max-w-5xl mx-auto px-6 py-10">
+    <!-- Header -->
+    <header class="flex flex-col sm:flex-row sm:items-center justify-between pb-8 border-b border-outline-variant/40 gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-primary-container text-white flex items-center justify-center shadow-sm">
+          <span class="material-symbols-outlined text-[28px]">school</span>
+        </div>
+        <div>
+          <h1 class="font-headline text-3xl font-bold text-on-surface tracking-tight">TeachAura PRD Summary</h1>
+          <p class="text-sm text-on-surface-variant mt-0.5 font-medium">Product Requirements & Architectural Foundation · v1.0</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-semibold uppercase tracking-wider">
+          NERDC Compliant
+        </span>
+        <span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-xs font-semibold">
+          Nigeria Market (JSS &amp; SSS)
+        </span>
+      </div>
+    </header>
+
+    <!-- Key Identity Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
+      <div class="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Core Brand Motto</span>
+          <h2 class="font-headline text-xl font-bold text-on-surface mt-2">Teach Smarter. Prepare Better.</h2>
+          <p class="text-sm text-on-surface-variant mt-2">
+            AI does the heavy curriculum preparation and real-time guidance; the teacher retains authoritative classroom decision-making.
+          </p>
+        </div>
+      </div>
+      <div class="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-tertiary">Target Audience</span>
+          <h2 class="font-headline text-xl font-bold text-on-surface mt-2">Nigerian Educators</h2>
+          <p class="text-sm text-on-surface-variant mt-2">
+            Primary &amp; secondary school teachers balancing heavy syllabus requirements, WAEC/BECE benchmarks, and high-density classrooms.
+          </p>
+        </div>
+      </div>
+      <div class="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-secondary">Design Palette</span>
+          <h2 class="font-headline text-xl font-bold text-on-surface mt-2">Editorial SaaS Minimal</h2>
+          <div class="flex items-center gap-2 mt-3 flex-wrap">
+            <span class="w-6 h-6 rounded-full bg-[#0F766E] border border-gray-200" title="Deep Teal (#0F766E)"></span>
+            <span class="w-6 h-6 rounded-full bg-[#134E4A] border border-gray-200" title="Dark Teal (#134E4A)"></span>
+            <span class="w-6 h-6 rounded-full bg-[#D1FAE5] border border-gray-200" title="Soft Mint (#D1FAE5)"></span>
+            <span class="w-6 h-6 rounded-full bg-[#F4B740] border border-gray-200" title="Golden Amber (#F4B740)"></span>
+            <span class="w-6 h-6 rounded-full bg-[#F8FAF9] border border-gray-200" title="Warm White (#F8FAF9)"></span>
+            <span class="w-6 h-6 rounded-full bg-[#334155] border border-gray-200" title="Slate Text (#334155)"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Modules -->
+    <section class="mt-10">
+      <h2 class="font-headline text-2xl font-bold text-on-surface mb-6">Core Functional Modules</h2>
+      <div class="space-y-4">
+        <div class="p-5 rounded-xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined">grid_view</span>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-base text-on-surface">1. Teacher Dashboard &amp; Overview</h3>
+            <p class="text-sm text-on-surface-variant mt-1">
+              Command central providing today’s scheduled classes, weekly syllabus pacing against NERDC standards, streak tracking, and instant access to lesson staging.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined">auto_awesome</span>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-base text-on-surface">2. AI Lesson Preparation &amp; Notes Studio</h3>
+            <p class="text-sm text-on-surface-variant mt-1">
+              Extracts syllabus objectives to generate full teacher lesson notes, pupil exercise book short notes (2B notebook format), low-cost local experiment ideas, and step-by-step chalkboard layouts.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined">slideshow</span>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-base text-on-surface">3. Guided Teaching Mode (Live Classroom Flow)</h3>
+            <p class="text-sm text-on-surface-variant mt-1">
+              A timed 45-minute live stage runner (Introduction 5m, Concept 15m, Activities 10m, Evaluation 10m, Wrap-up 5m) with responsive teacher controls: start, pause, extend, skip, classroom cold call randomizer, and chalkboard projector display.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined">quiz</span>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-base text-on-surface">4. Assessment Studio &amp; Question Generator</h3>
+            <p class="text-sm text-on-surface-variant mt-1">
+              On-demand generator for Continuous Assessment (CA) and term examinations featuring multiple-choice, fill-in-the-gap, theory questions, and step-by-step marking schemes calibrated to WAEC and BECE grading standards.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined">calendar_month</span>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-base text-on-surface">5. Weekly Teaching Planner &amp; Progress Tracker</h3>
+            <p class="text-sm text-on-surface-variant mt-1">
+              Dynamic redistribution of syllabus coverage around unexpected disruptions (public holidays, midterm breaks, sports days) paired with milestone badges and positive consistency streaks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

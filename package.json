@@ -1,0 +1,21 @@
+{
+  "name": "teachaura",
+  "version": "1.0.0",
+  "description": "TeachAura - AI Teaching Assistant & Teacher Productivity Platform",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test/smoke.test.js"
+  },
+  "keywords": [
+    "education",
+    "ai-teaching-assistant",
+    "nerdc",
+    "nigeria",
+    "curriculum-planning"
+  ],
+  "author": "TeachAura Team",
+  "license": "MIT"
+}
