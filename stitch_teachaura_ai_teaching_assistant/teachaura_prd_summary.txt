@@ -1,0 +1,10 @@
+# TEACHAURA PRD v1.0 SUMMARY
+Target Market: Nigeria (Primary & Secondary School Teachers)
+Brand: TeachAura ("Teach Smarter. Prepare Better.")
+Primary Color: Deep Teal (#0F766E), Secondary: Dark Teal (#134E4A), Soft Mint: #D1FAE5, Accent: Golden Amber (#F4B740), Background: Warm White (#F8FAF9), Card: #FFFFFF, Slate Text: #334155, Border: #E2E8F0.
+Core Modules:
+1. Teacher Dashboard (Overview, today's schedule, weekly progress, alerts, reminders)
+2. AI Lesson Preparation (Topic, Learning Objectives, Teacher Note, Student Short Note, Teaching Procedures, Editable materials)
+3. Guided Teaching Mode (Live 45-min classroom stage runner: Introduction, Concept Explanation, Activities, Evaluation, Conclusion with flexible timers & teacher controls)
+4. Assessment & Question Generator (Multi-choice, Theory, Fill-in-the-gap, Marking scheme, Nigerian curriculum focus)
+5. Weekly Teaching Planner & Progress Tracker (Term syllabus coverage, streak & consistency gamification)

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"error-container":"#ffdad6","primary-fixed":"#9cf2e8","tertiary-fixed-dim":"#fabc45","on-surface-variant":"#3e4947","on-error":"#ffffff","inverse-primary":"#80d5cb","on-background":"#0d1c2f","background":"#f8f9ff","secondary-fixed-dim":"#9ad1cb","surface-container-high":"#dde9ff","surface-container-highest":"#d5e3fd","tertiary":"#6c4b00","outline-variant":"#bdc9c6","surface-container-lowest":"#ffffff","surface":"#f8f9ff","error":"#ba1a1a","surface-dim":"#ccdbf4","outline":"#6e7977","tertiary-fixed":"#ffdea9","on-tertiary-container":"#ffe7c4","surface-bright":"#f8f9ff","inverse-surface":"#233144","secondary-fixed":"#b5ede7","on-tertiary-fixed":"#271900","surface-variant":"#d5e3fd","on-secondary-fixed":"#00201e","secondary":"#316763","on-secondary-fixed-variant":"#144f4b","on-surface":"#0d1c2f","on-error-container":"#93000a","on-tertiary":"#ffffff","surface-container-low":"#eff4ff","secondary-container":"#b5ede7","primary":"#005c55","inverse-on-surface":"#ebf1ff","on-tertiary-fixed-variant":"#5f4100","primary-container":"#0f766e","on-primary-container":"#a3faef","on-secondary-container":"#376d69","primary-fixed-dim":"#80d5cb","on-primary-fixed":"#00201d","surface-container":"#e6eeff","on-primary-fixed-variant":"#00504a","on-secondary":"#ffffff","surface-tint":"#006a63","on-primary":"#ffffff","tertiary-container":"#8b6200"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-lg":"1.5rem","space-xl":"2rem","space-md":"1rem","gutter-mobile":"1rem","space-xs":"0.25rem",margin:"2rem","margin-mobile":"1rem",gutter:"1.5rem"},fontFamily:{"body-md":["Inter"],"label-sm":["Inter"],"body-lg":["Inter"],"headline-xl":["DM Sans"],"headline-xl-mobile":["DM Sans"],"headline-lg":["DM Sans"],"body-sm":["Inter"],"headline-lg-mobile":["DM Sans"],"headline-md":["DM Sans"],"label-md":["Inter"],"headline-sm":["DM Sans"],"title-md":["Inter"]},fontSize:{"body-md":["15px",{lineHeight:"22px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.02em",fontWeight:"600"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-xl-mobile":["30px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-lg-mobile":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"label-md":["13px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"title-md":["16px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><img alt="TeachAura Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrCSulcL6cPlXXXRy4AZ5KhJ8RSdJXyDahIDyNQX72-3gqyCVmNhoL2UyvOewnvl3ZGepP0cCaChCgY9xQ4zEFEHmPL9g103oenBgfz5yhk0xvujGzQVo6S4Tu6kasngxGKWqRFKtugMa8_kje6OUA3SnM7Cpq-qqGge5ZU3smwJwvQSNzsftytHG4y13yEb6ivRKnnKJmV7U_3Yyo87w6NYV21PLZXnXZGrc8tFiKY"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary font-bold leading-none tracking-tight">TeachAura</span><span class="font-label-sm text-label-sm text-tertiary-container uppercase tracking-wider font-semibold">The Teaching Flow</span></div></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs italic">Teach Smarter. Prepare Better.</p></div><div class="px-space-md py-space-sm"><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-md text-body-md">Overview</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm" data-path="lesson-preparation" href="#"><span class="material-symbols-outlined text-[20px]">auto_awesome</span><span class="font-body-md text-body-md">Lesson Preparation</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="guided-teaching-mode" href="#"><span class="material-symbols-outlined text-[20px]">slideshow</span><span class="font-body-md text-body-md">Guided Teaching Mode</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="assessment-studio" href="#"><span class="material-symbols-outlined text-[20px]">quiz</span><span class="font-body-md text-body-md">Assessment Studio</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="weekly-planner" href="#"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span class="font-body-md text-body-md">Weekly Planner &amp; Syllabus</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="achievements-and-streaks" href="#"><span class="material-symbols-outlined text-[20px]">military_tech</span><span class="font-body-md text-body-md">Achievements &amp; Streaks</span></a></nav></div></div><div class="p-space-md m-space-md bg-surface-container-low rounded-xl flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">NERDC Syllabus</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">Active</span></div><p class="font-body-sm text-body-sm text-on-surface">Nigerian Curriculum aligned for Basic Sci &amp; Biology.</p></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="material-symbols-outlined text-[18px] text-primary">account_balance</span><span class="font-body-sm text-body-sm text-on-surface font-medium truncate max-w-md">Federal Government College, Lagos | Term 2 (2024/2025) - Week 6</span></div><div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container/10"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-primary font-semibold">Live Class Ready</span></div></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-lg font-title-md text-title-md transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Quick AI Prep</span></button><div class="h-6 w-px bg-outline-variant/30 hidden sm:block"></div><div class="flex items-center gap-space-sm"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvHZjNBLVSEXRdIxvCNcLfa1VkHAdj-IF5x8U2q6AvqUx2u-ooGBWj9L_rs1Y6oaDmcVg_w_brJLcfQ9jCwTZO8WIwVT1f9rnM3bJM3HYd-Gs7cYEwprwmm3SSSJldHGxhRelJzQQ0KJcKNGqmPfYYG1u_JYcqD40nRl4F6SG5U4HRXRl-DVSgLU_XvVvBNqJtQh5RXd2e1xzzKCQNqVgs6F1p_fMwWRyZR-69jZ0"/><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface-container-lowest"></span></div><div class="flex flex-col leading-tight"><span class="font-label-md text-label-md text-on-surface font-semibold">Mrs. Adebayo, F.</span><span class="font-label-sm text-label-sm text-on-surface-variant">Senior Teacher (JSS 2 - SS 2)</span></div></div></div></header><main class="w-full pt-16 bg-surface px-space-lg min-h-screen"><div class="flex flex-col w-full pb-16">
+<!-- Top Command & Action Bar -->
+<section class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider flex-wrap">
+<a class="hover:text-primary transition-colors" href="#">Lesson Preparation</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>JSS 2 Basic Science</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">The Human Respiratory System</span>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap mt-0.5">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Lesson Studio &amp; Curriculum Stager</h1>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>NERDC Aligned • Auto-Saved 2 mins ago</span>
+</div>
+</div>
+</div>
+<!-- Action Toolbar Buttons -->
+<div class="flex items-center gap-space-xs sm:gap-space-sm flex-wrap self-start xl:self-auto">
+<button class="flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-low text-on-surface shadow-sm font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Save Changes</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-low text-on-surface shadow-sm font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Export PDF</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-inverse-surface hover:bg-on-background text-inverse-on-surface shadow-sm font-label-md text-label-md transition-all" id="btn-toggle-chalkboard" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span>Chalkboard View</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-lg py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md shadow-md transition-all group" type="button">
+<span>Send to Guided Runner</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">rocket_launch</span>
+</button>
+</div>
+</section>
+<!-- Lesson Metadata & Context Banner -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">school</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Target Cohort</span>
+<span class="font-title-md text-title-md text-on-surface truncate">JSS 2 (A, B, Gold, Emerald)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">45 Mins • 120 Students Total</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">menu_book</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">NERDC Curriculum Theme</span>
+<span class="font-title-md text-title-md text-on-surface truncate">You &amp; Your Environment</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Theme 2, Sub-theme 3 (Respiration)</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Pacing &amp; Period</span>
+<span class="font-title-md text-title-md text-on-surface truncate">Period 3 (10:15 - 11:00 AM)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Prior to Break • Double Room Lab</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Quality Index</span>
+<span class="font-title-md text-title-md text-on-surface">WAEC/BECE Foundation</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pass rate benchmark: 94%</span>
+</div>
+</div>
+</section>
+<!-- Instructional Core: Objectives, Aids & Entry Behavior Strip -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg mb-space-lg relative overflow-hidden">
+<div class="flex flex-col lg:flex-row gap-space-lg justify-between items-start">
+<!-- Behavioral Objectives Column -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs mb-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">flag</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Behavioral Objectives</h2>
+<span class="font-label-sm text-label-sm bg-primary/10 text-primary px-2 py-0.5 rounded-full">SMART Format</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm italic">
+          By the end of the 45-minute period, the JSS 2 learners should comfortably demonstrate:
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wide">1. Cognitive Domain</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+              Identify and label the 5 primary organs of the respiratory system (nasal passage, trachea, bronchi, lungs, diaphragm) without notes.
+            </p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold tracking-wide">2. Psychomotor Domain</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+              Assemble and demonstrate the mechanical action of inhalation vs exhalation using the desktop plastic bottle &amp; balloon model.
+            </p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-tertiary-container uppercase font-bold tracking-wide">3. Affective / Local Context</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+              Relate breathing hygiene to daily Lagos/Nigerian realities (dusty harmattan air, generator exhaust fumes, and sports recovery).
+            </p>
+</div>
+</div>
+</div>
+<!-- Aids & Entry Knowledge Column -->
+<div class="w-full lg:w-96 shrink-0 flex flex-col gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-secondary text-[18px]">biotech</span>
+<span class="font-label-md text-label-md text-on-surface uppercase font-bold tracking-wide">Instructional Materials</span>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-1">
+<span class="px-2.5 py-1 rounded-md bg-surface-container-lowest text-on-surface font-body-sm text-body-sm shadow-sm">Human Torso Chart</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container-lowest text-on-surface font-body-sm text-body-sm shadow-sm">Bell Jar Lung Demo</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container-lowest text-on-surface font-body-sm text-body-sm shadow-sm">Plastic Bottle &amp; 2 Balloons</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container-lowest text-on-surface font-body-sm text-body-sm shadow-sm">Chalkboard Grid</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-primary text-[18px]">history_edu</span>
+<span class="font-label-md text-label-md text-on-surface uppercase font-bold tracking-wide">Learner's Entry Behavior</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Pupils completed circulatory units (Term 2, Week 5) and understand how blood transports oxygen from the lungs to heart and muscles.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Split Canvas: Dual-Notebook & AI Co-Pilot Dock -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left + Middle Pane: Dual Tab Lesson Studio (8 Columns) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Notebook Navigation & View Mode Header -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-space-xs rounded-xl shadow-sm">
+<div class="flex items-center gap-1">
+<button class="flex items-center gap-2 px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md shadow-sm transition-all" id="tab-btn-teacher" type="button">
+<span class="material-symbols-outlined text-[18px]">assignment</span>
+<span>Teacher's Lesson Plan (Full Note)</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low font-label-md text-label-md transition-all" id="tab-btn-student" type="button">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span>Pupil's 2B Exercise Book Note</span>
+</button>
+</div>
+<div class="hidden sm:flex items-center gap-space-xs pr-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary-container"></span> 45-Min Allocation</span>
+</div>
+</div>
+<!-- TAB 1: Comprehensive Teacher's Pedagogical Document -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-lg" id="tab-teacher-content">
+<!-- Editor Formatting Floating Mockup -->
+<div class="flex items-center justify-between border-b pb-space-sm gap-2 overflow-x-auto text-on-surface-variant">
+<div class="flex items-center gap-1 shrink-0">
+<button class="p-1.5 hover:bg-surface-container-low rounded text-on-surface" title="Bold"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1.5 hover:bg-surface-container-low rounded text-on-surface" title="Italic"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<button class="p-1.5 hover:bg-surface-container-low rounded text-on-surface" title="List"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
+<button class="p-1.5 hover:bg-surface-container-low rounded text-on-surface" title="Numbered"><span class="material-symbols-outlined text-[18px]">format_list_numbered</span></button>
+<div class="h-4 w-px bg-outline-variant/40 mx-1"></div>
+<button class="p-1.5 hover:bg-surface-container-low rounded text-on-surface" title="Table"><span class="material-symbols-outlined text-[18px]">table_chart</span></button>
+<button class="p-1.5 hover:bg-surface-container-low rounded text-on-surface" title="Insert Science Diagram"><span class="material-symbols-outlined text-[18px]">schema</span></button>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold shrink-0">Format: Standard NERDC Secondary Schema</span>
+</div>
+<!-- Section 1: Intro Hook -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">1</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Lesson Introduction &amp; Starter Hook (5 Minutes)</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded">00:00 - 05:00</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-space-xs mt-1">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+<strong class="text-primary font-semibold">Teacher Activity (The Inter-House Sprint Hook):</strong> 
+              Instruct two students to stand in front of the classroom and jog vigorously on the spot for 35 seconds. Ask the entire class to place their right palms flat against their ribcages.
+            </p>
+<p class="font-body-md text-body-md text-on-surface-variant italic">
+              "Class, what do you notice about their shoulders and rib cage now compared to when we were sitting during morning assembly? Why is the chest rising and falling so rapidly after the sprint?"
+            </p>
+<div class="flex items-center gap-2 mt-1 text-tertiary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">lightbulb</span>
+<span>Connect to student experience: Harmattan nasal dry crusting &amp; 100m heats.</span>
+</div>
+</div>
+</div>
+<!-- Section 2: Step-by-Step Delivery Matrix -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">2</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Step-by-Step Instructional Matrix (20 Minutes)</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded">05:00 - 25:00</span>
+</div>
+<!-- Structured Lesson Table -->
+<div class="overflow-x-auto rounded-lg shadow-sm mt-1">
+<table class="w-full text-left bg-surface-container-lowest">
+<thead class="bg-surface-container-low text-on-surface font-label-md text-label-md">
+<tr>
+<th class="py-2.5 px-3 font-semibold">Step &amp; Time</th>
+<th class="py-2.5 px-3 font-semibold">Teacher's Pedagogical Flow</th>
+<th class="py-2.5 px-3 font-semibold">Pupils' Active Engagement</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low/50">
+<td class="py-3 px-3 align-top font-semibold text-primary">
+                    Step I<br/><span class="font-normal text-on-surface-variant text-[11px]">(7 mins)</span>
+</td>
+<td class="py-3 px-3 align-top">
+<p class="font-medium text-on-surface">Exploration of Respiratory Organs</p>
+<p class="text-on-surface-variant mt-0.5">Presents the human torso chart. Traces airflow path: Nostrils → Trachea (windpipe) → Left/Right Bronchi → Bronchioles → Alveoli (air sacs).</p>
+</td>
+<td class="py-3 px-3 align-top">
+<p>Observe chart; touch their own throat to feel the cartilaginous rings of the trachea. Note down key spelling words.</p>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50">
+<td class="py-3 px-3 align-top font-semibold text-primary">
+                    Step II<br/><span class="font-normal text-on-surface-variant text-[11px]">(8 mins)</span>
+</td>
+<td class="py-3 px-3 align-top">
+<p class="font-medium text-on-surface">Mechanism: Inhalation vs Exhalation</p>
+<p class="text-on-surface-variant mt-0.5">Explains pressure volume laws simply. Inhalation: Diaphragm contracts &amp; flattens downward, ribcage moves upwards and outwards. Chest cavity volume enlarges.</p>
+</td>
+<td class="py-3 px-3 align-top">
+<p>Take deliberate deep breaths in unison; place hands under ribs to physically feel diaphragm excursion and rib elevation.</p>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50">
+<td class="py-3 px-3 align-top font-semibold text-primary">
+                    Step III<br/><span class="font-normal text-on-surface-variant text-[11px]">(5 mins)</span>
+</td>
+<td class="py-3 px-3 align-top">
+<p class="font-medium text-on-surface">Gaseous Exchange at Alveolar Beds</p>
+<p class="text-on-surface-variant mt-0.5">Describes diffusion across thin moist membranes. Oxygen moves into capillaries; carbon dioxide exits into lungs for expulsion.</p>
+</td>
+<td class="py-3 px-3 align-top">
+<p>Answer prompt: "Why do athletes need immediate oxygen replenishment after running?" Connect to cellular energy release.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Section 3: Visual Blackboard Sketches & Diagram Asset -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">3</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Chalkboard Diagram &amp; Apparatus Layout</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Lab Staging</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md mt-1">
+<!-- Diagram Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Figure 6.1: The Respiratory Pathway</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-primary/10 text-primary rounded">Board Copy</span>
+</div>
+<div class="w-full h-44 rounded-lg overflow-hidden bg-surface-container-highest relative flex items-center justify-center">
+<img class="w-full h-full object-cover rounded-lg" data-alt="Detailed anatomical educational diagram of human respiratory system for secondary school basic science textbook showing trachea, bronchial tree, lungs, and diaphragm with clean callout labels in Nigerian classroom context" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCepHNbjHE1ouBuNkXCR43lmJ_Ry7z49eFUfbVGgnqF_B3KitYJN0lr0rSddr7NdqWuHCrVQlMdit1UOn6zIp7z2sF7iOFAUB5OaYqcJaiBxluxlHMUIHJBv1lbaZ47-Nrf_gKxMxg654PfoFJivyNtc-i1ypwyoAPDkDHBbxC0GUFnqgxYihNVulQoF9AbnS2ucUWR_7Mo9soDk90-5ujQpspPGrm8GL6IFIlXISA"/>
+<div class="absolute bottom-2 left-2 right-2 px-2.5 py-1.5 bg-surface-container-lowest/90 backdrop-blur rounded text-on-surface text-[11px] font-medium flex justify-between items-center">
+<span>Trachea → Bronchus → Alveoli</span>
+<span class="text-primary font-bold">4 Labels Required</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Teacher draws this on the right-hand board quadrant using white and yellow chalk before Period 3 commencement.
+              </p>
+</div>
+<!-- DIY Apparatus Demonstration Guide -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">DIY Bell-Jar Model Setup</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded">Hands-on</span>
+</div>
+<div class="w-full h-44 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover rounded-lg" data-alt="Science laboratory demonstration showing homemade plastic bottle bell jar model with stretched balloon diaphragm and twin internal lung balloons on wooden classroom desk with student hands testing pressure changes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNhaxC-FGuNbqO_J7Y92NQm_iGf69CpR1CUeNAHbMsItSRszrngZTNbnVekIrwOc7tYLBKK25fSNkO1tWB6-PKI3vxgFR_swATXu8XWowOgSGcHbs1XdkIXT0-lwtsULs-FUZ1_37JSxAD9E776goPDVn9S4F96RgHuTM89OVtDfw7vgNc07bmIMRVGIBKhuCBo3G9fq_dztctVpSo_9UJ2fU-fmXMvhEqC1g9Yow"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/70 to-transparent flex items-end p-space-sm">
+<span class="text-on-primary font-label-sm text-label-sm">Pulling the bottom rubber diaphragm inflates internal balloons</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+                Demonstrates Boyle's breathing mechanics without requiring pressurized hospital oxygen kits.
+              </p>
+</div>
+</div>
+</div>
+<!-- Section 4: Class Practical Activity (10 mins) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">4</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Student Pair Practical: Chest Expansion Test (10 Mins)</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded">25:00 - 35:00</span>
+</div>
+<div class="p-space-md bg-secondary-container/20 rounded-lg flex flex-col gap-space-xs mt-1">
+<p class="font-body-md text-body-md text-on-surface font-medium">Activity Instructions for Desk Rows:</p>
+<ol class="list-decimal pl-5 space-y-1 text-on-surface font-body-sm text-body-sm">
+<li>Each bench pairs up (Pupil A &amp; Pupil B).</li>
+<li>Pupil A wraps tailor's tape (or flexible twine) around Pupil B's ribcage right below armpits.</li>
+<li>Pupil B breathes out completely: record chest circumference in centimeters (e.g., 68 cm).</li>
+<li>Pupil B inhales deeply to maximum lung capacity: measure expansion (e.g., 73 cm). Calculate net chest difference.</li>
+<li>Switch roles and record measurements in practical workbook.</li>
+</ol>
+</div>
+</div>
+<!-- Section 5: Evaluation & Summary (10 mins) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">5</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Class Evaluation &amp; Assignment (10 Mins)</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded">35:00 - 45:00</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm mt-1">
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold">Oral Evaluation Checks</span>
+<p class="font-body-sm text-body-sm text-on-surface">1. "Chinedu, what keeps the trachea from collapsing when there is no air inside?" (Answer: Cartilage rings).</p>
+<p class="font-body-sm text-body-sm text-on-surface">2. "Amina, when you breathe in, does your diaphragm move up or flatten down?"</p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-tertiary-container uppercase font-bold">Weekend Homework (2B Note)</span>
+<p class="font-body-sm text-body-sm text-on-surface">State 3 harmful effects of breathing unrefined firewood smoke and generator exhaust (Carbon Monoxide) on alveolar health.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 2: Pupil's Simplified Exercise Book Note (Toggleable) -->
+<div class="hidden bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex-col gap-space-md" id="tab-student-content">
+<div class="flex items-center justify-between border-b pb-space-sm">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Pupil Copy Note (Board Copy)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Formatted cleanly for Junior Secondary 2B/2D Exercise Book entries.</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-secondary-container text-on-secondary-container font-label-md text-label-md flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span>Copy All Note Text</span>
+</button>
+</div>
+<!-- Simulated Ruled Paper Card -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col gap-space-md">
+<div class="text-center pb-space-xs border-b">
+<h2 class="font-title-md text-title-md text-on-surface uppercase font-bold tracking-wide">TOPIC: THE HUMAN RESPIRATORY SYSTEM</h2>
+<p class="font-label-md text-label-md text-primary font-semibold">SUB-TOPIC: Organs of Respiration &amp; Breathing Mechanism</p>
+</div>
+<div class="flex flex-col gap-space-sm text-on-surface font-body-md text-body-md">
+<div>
+<p class="font-bold text-primary">1. Definition of Respiration:</p>
+<p class="mt-0.5">Respiration is the biological process by which living organisms take in oxygen, use it to break down digested food for energy release, and release carbon dioxide and water vapour as waste products.</p>
+</div>
+<div>
+<p class="font-bold text-primary">2. Main Organs of the Respiratory System:</p>
+<ul class="list-disc pl-5 mt-1 space-y-1">
+<li><strong>Nose / Nostrils:</strong> Filters incoming air with tiny hairs (cilia) and warms it.</li>
+<li><strong>Trachea (Windpipe):</strong> A tube strengthened with C-shaped rings of cartilage that carries air to lungs.</li>
+<li><strong>Bronchi:</strong> Two main tubes branching into the right and left lungs.</li>
+<li><strong>Lungs:</strong> The primary spongy organs containing millions of tiny air sacs called <em>Alveoli</em>.</li>
+<li><strong>Diaphragm:</strong> A sheet of muscular tissue separating the chest cavity from the abdomen.</li>
+</ul>
+</div>
+<div>
+<p class="font-bold text-primary">3. Summary Table: Inhalation vs Exhalation</p>
+<div class="overflow-x-auto mt-2">
+<table class="w-full text-left bg-surface-container-lowest rounded-lg">
+<thead class="bg-primary/10 text-primary font-label-sm text-label-sm">
+<tr>
+<th class="p-2">Feature</th>
+<th class="p-2">Inhalation (Breathing In)</th>
+<th class="p-2">Exhalation (Breathing Out)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-body-sm font-body-sm">
+<tr>
+<td class="p-2 font-medium">Diaphragm</td>
+<td class="p-2">Contracts and moves downward (flattens)</td>
+<td class="p-2">Relaxes and arches upward (dome shape)</td>
+</tr>
+<tr>
+<td class="p-2 font-medium">Ribcage</td>
+<td class="p-2">Moves up and outward</td>
+<td class="p-2">Moves down and inward</td>
+</tr>
+<tr>
+<td class="p-2 font-medium">Chest Volume</td>
+<td class="p-2">Increases</td>
+<td class="p-2">Decreases</td>
+</tr>
+<tr>
+<td class="p-2 font-medium">Air Movement</td>
+<td class="p-2">Rushes into the lungs</td>
+<td class="p-2">Forced out of the lungs</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<p class="font-bold text-primary">4. Healthy Breathing Habits:</p>
+<p>Avoid inhaling smoke from refuse burning and "I-better-pass-my-neighbor" generators. Always breathe through your nose (not your mouth) during harmattan dust storms.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Pane: AI Co-Pilot Floating Planning Assistant (4 Columns) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- AI Engine Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface font-semibold">Aura AI Co-Pilot</h2>
+<p class="font-label-sm text-label-sm text-primary font-medium">Nigerian Classroom Tuned</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Active</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Contextually analyzing your JSS 2 Lesson. Click any tactical recommendation to inject it into your note.
+        </p>
+<!-- Prompt Cards Stack -->
+<div class="flex flex-col gap-space-xs">
+<!-- Suggestion 1: Local Hands-On -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">recycling</span> Low-Cost Local Experiment
+              </span>
+<span class="material-symbols-outlined text-primary text-[18px] group-hover:translate-x-1 transition-transform">add_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Use empty 50cl Eva water bottle &amp; party balloons</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Provides step-by-step assembly using discarded plastic bottles and rubber bands readily sourced around school premises.
+            </p>
+</div>
+<!-- Suggestion 2: Relatable Cultural Analogies -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">translate</span> Relatable Nigerian Analogies
+              </span>
+<span class="material-symbols-outlined text-secondary text-[18px] group-hover:translate-x-1 transition-transform">add_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Bellows (Hausa: 'Kuzun/Zuga-zugu') for Air Pressure</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Compares lung diaphragm suction to the traditional blacksmith bellows (Zugazugu) or suction pump used in drawing kerosene.
+            </p>
+</div>
+<!-- Suggestion 3: Differentiated Learning -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary-container uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group_work</span> Fast vs Slow Differentiation
+              </span>
+<span class="material-symbols-outlined text-tertiary-container text-[18px] group-hover:translate-x-1 transition-transform">add_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Challenge for fast finishers &amp; support for struggling</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Assign gifted students to calculate breathing rate variation (at rest vs post-skipping rope), while struggling learners sketch the trachea.
+            </p>
+</div>
+<!-- Suggestion 4: Instant Oral Check-ins -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">record_voice_over</span> 3 Quick Formative Checks
+              </span>
+<span class="material-symbols-outlined text-primary text-[18px] group-hover:translate-x-1 transition-transform">add_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Cold-Call Questions with model teacher rubrics</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Ready-made 10-second recall checks for checking student attention right before transition to notebook writing.
+            </p>
+</div>
+</div>
+<!-- Custom Prompt Input -->
+<div class="flex flex-col gap-1.5 pt-space-xs border-t">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Custom Aura Instruction</label>
+<div class="relative">
+<textarea class="w-full p-2.5 rounded-lg bg-surface font-body-sm text-body-sm text-on-surface border-none resize-none focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" placeholder="e.g. Adapt this lesson for a classroom with no electricity or digital projector..." rows="3"></textarea>
+<button class="absolute bottom-2 right-2 px-2.5 py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm flex items-center gap-1 hover:bg-primary-container transition-colors" type="button">
+<span>Generate</span>
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Delivery Widget & Timer Preview -->
+<div class="bg-primary text-on-primary rounded-xl shadow-md p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">podium</span>
+<span class="font-title-md text-title-md font-semibold">Live Classroom Runner Dock</span>
+</div>
+<span class="font-label-sm text-label-sm bg-primary-container px-2 py-0.5 rounded text-on-primary-container font-mono">45:00 Total</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary/80">
+          When ready, push to runner mode. The floating dock will appear with student randomizer, pace buzzer, and blackboard slide stages.
+        </p>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1 text-[12px] text-primary-fixed">
+<span class="material-symbols-outlined text-[16px]">devices</span>
+<span>Compatible with phone or projector</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm" type="button">
+            Launch Preview
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Chalkboard Summary Overlay Modal (Hidden by default, triggered by toggle) -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/80 backdrop-blur-sm p-4 md:p-12 items-center justify-center" id="modal-chalkboard">
+<div class="w-full max-w-4xl bg-surface-container-lowest rounded-2xl shadow-xl p-space-lg flex flex-col gap-space-md max-h-[921px] overflow-y-auto">
+<div class="flex items-center justify-between border-b pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">aspect_ratio</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Classroom Chalkboard Split Layout</h3>
+</div>
+<button class="p-1 rounded-lg hover:bg-surface-container-low text-on-surface-variant" id="btn-close-chalkboard" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        This mirrors how you should partition your green or black chalkboard in the JSS 2 classroom for optimal student legibility:
+      </p>
+<!-- Blackboard Canvas Mockup -->
+<div class="bg-[#143029] p-space-lg rounded-xl text-on-primary font-body-md text-body-md shadow-inner grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Board Column 1 -->
+<div class="flex flex-col gap-2 border-r border-[#204e43] pr-space-sm">
+<span class="text-tertiary-fixed font-bold font-label-md text-label-md uppercase border-b border-[#204e43] pb-1">LEFT: Objectives &amp; Dates</span>
+<p class="text-[13px] leading-relaxed">
+            • Date: 17th Feb, 2025<br/>
+            • Subj: Basic Science (JSS 2)<br/>
+            • Topic: Human Respiration<br/>
+            • Key Vocabulary:<br/>
+              1. Trachea (Cartilage)<br/>
+              2. Bronchi / Bronchiole<br/>
+              3. Alveoli (Air Sacs)<br/>
+              4. Diaphragm
+          </p>
+</div>
+<!-- Board Column 2 -->
+<div class="flex flex-col gap-2 border-r border-[#204e43] pr-space-sm">
+<span class="text-tertiary-fixed font-bold font-label-md text-label-md uppercase border-b border-[#204e43] pb-1">CENTER: Diagram &amp; Mechanism</span>
+<p class="text-[13px] leading-relaxed text-secondary-fixed">
+            [Clear labeled drawing of windpipe &amp; two lung lobes]<br/><br/>
+<strong>INHALATION:</strong><br/>
+            Diaphragm ↓ (Flattens)<br/>
+            Ribs ↑ (Expands)<br/>
+            Pressure ↓ Air Enters
+          </p>
+</div>
+<!-- Board Column 3 -->
+<div class="flex flex-col gap-2">
+<span class="text-tertiary-fixed font-bold font-label-md text-label-md uppercase border-b border-[#204e43] pb-1">RIGHT: Evaluation / Homework</span>
+<p class="text-[13px] leading-relaxed">
+<strong>Evaluation:</strong><br/>
+            1. Name the organ that divides into two bronchi.<br/>
+            2. Where does gaseous diffusion take place?<br/><br/>
+<strong>Assignment:</strong><br/>
+            In your 2B note, draw and label the respiratory system. Submit Thursday 8:00 AM.
+          </p>
+</div>
+</div>
+<div class="flex justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md" id="btn-print-chalkboard" type="button">
+          Print Chalkboard Guide
+        </button>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md" id="btn-done-chalkboard" type="button">
+          Done
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive Logic for Switching Tabs & Modal -->
+<script>
+    (function initLessonStudio() {
+      const tabTeacherBtn = document.getElementById('tab-btn-teacher');
+      const tabStudentBtn = document.getElementById('tab-btn-student');
+      const tabTeacherContent = document.getElementById('tab-teacher-content');
+      const tabStudentContent = document.getElementById('tab-student-content');
+
+      function switchTabs(activeTab) {
+        if (activeTab === 'teacher') {
+          tabTeacherBtn.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+          tabTeacherBtn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-low');
+          tabStudentBtn.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+          tabStudentBtn.classList.add('text-on-surface-variant', 'hover:bg-surface-container-low');
+
+          tabTeacherContent.classList.remove('hidden');
+          tabTeacherContent.classList.add('flex');
+          tabStudentContent.classList.add('hidden');
+          tabStudentContent.classList.remove('flex');
+        } else {
+          tabStudentBtn.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+          tabStudentBtn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-low');
+          tabTeacherBtn.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+          tabTeacherBtn.classList.add('text-on-surface-variant', 'hover:bg-surface-container-low');
+
+          tabStudentContent.classList.remove('hidden');
+          tabStudentContent.classList.add('flex');
+          tabTeacherContent.classList.add('hidden');
+          tabTeacherContent.classList.remove('flex');
+        }
+      }
+
+      tabTeacherBtn.addEventListener('click', () => switchTabs('teacher'));
+      tabStudentBtn.addEventListener('click', () => switchTabs('student'));
+
+      // Chalkboard Modal Toggling
+      const chalkboardModal = document.getElementById('modal-chalkboard');
+      const toggleChalkboardBtn = document.getElementById('btn-toggle-chalkboard');
+      const closeChalkboardBtn = document.getElementById('btn-close-chalkboard');
+      const doneChalkboardBtn = document.getElementById('btn-done-chalkboard');
+
+      function openModal() {
+        chalkboardModal.classList.remove('hidden');
+        chalkboardModal.classList.add('flex');
+      }
+
+      function closeModal() {
+        chalkboardModal.classList.add('hidden');
+        chalkboardModal.classList.remove('flex');
+      }
+
+      if (toggleChalkboardBtn) toggleChalkboardBtn.addEventListener('click', openModal);
+      if (closeChalkboardBtn) closeChalkboardBtn.addEventListener('click', closeModal);
+      if (doneChalkboardBtn) doneChalkboardBtn.addEventListener('click', closeModal);
+    })();
+  </script>
+</div></main></div></body></html>
