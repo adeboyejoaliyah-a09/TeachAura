@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_dashboard" name="shell-type"/>
+  <title>TeachAura - AI Teaching Assistant</title>
+
+  <!-- Google Web Fonts: DM Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
+
+  <!-- Google Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9ff;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: #0d1c2f;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    @media print {
+      aside, header, #toast-container, button:not(.printable) {
+        display: none !important;
+      }
+      main {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      body {
+        background-color: #ffffff !important;
+      }
+    }
+  </style>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#f8f9ff",
+            "surface-dim": "#ccdbf4",
+            "surface-bright": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e6eeff",
+            "surface-container-high": "#dde9ff",
+            "surface-container-highest": "#d5e3fd",
+            "surface-variant": "#d5e3fd",
+            "on-surface": "#0d1c2f",
+            "on-surface-variant": "#3e4947",
+            "inverse-surface": "#233144",
+            "inverse-on-surface": "#ebf1ff",
+            "outline": "#6e7977",
+            "outline-variant": "#bdc9c6",
+            "surface-tint": "#006a63",
+            "primary": "#005c55",
+            "primary-container": "#0f766e",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#a3faef",
+            "inverse-primary": "#80d5cb",
+            "secondary": "#316763",
+            "secondary-container": "#b5ede7",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#376d69",
+            "tertiary": "#6c4b00",
+            "tertiary-container": "#8b6200",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-container": "#ffe7c4",
+            "tertiary-fixed": "#ffdea9",
+            "tertiary-fixed-dim": "#fabc45",
+            "on-tertiary-fixed": "#271900",
+            "on-tertiary-fixed-variant": "#5f4100",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "background": "#f8f9ff",
+            "on-background": "#0d1c2f"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            "2xl": "1rem",
+            full: "9999px"
+          },
+          spacing: {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter": "1.5rem",
+            "gutter-mobile": "1rem",
+            "margin": "2rem",
+            "margin-mobile": "1rem"
+          },
+          fontFamily: {
+            "headline": ["DM Sans", "sans-serif"],
+            "body": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+  <div id="app-root" class="min-h-screen flex">
+    <!-- Persistent Left Sidebar Navigation -->
+    <div id="sidebar-container"></div>
+
+    <!-- Institutional Top Header -->
+    <div id="header-container"></div>
+
+    <!-- Dynamic Main Content Viewport -->
+    <main id="main-content-viewport" class="w-full pl-72 pt-16 bg-surface px-space-lg min-h-screen">
+      <!-- Injected view components render here -->
+    </main>
+
+    <!-- Floating Toast Notifications Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+  </div>
+
+  <!-- Main ES6 Application Orchestrator -->
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
