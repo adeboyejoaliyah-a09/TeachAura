@@ -7,11 +7,11 @@ export function renderGuidedTeachingRunner(state) {
   // Format remaining time
   const mins = Math.floor(classroom.remainingSeconds / 60);
   const secs = classroom.remainingSeconds % 60;
-  const formattedTime = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  const formattedTime = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
 
   const elapsedMins = Math.floor(classroom.elapsedTotalSeconds / 60);
   const elapsedSecs = classroom.elapsedTotalSeconds % 60;
-  const formattedElapsed = `${String(elapsedMins).padStart(2, '0')}:${String(elapsedSecs).padStart(2, '0')}`;
+  const formattedElapsed = `${String(elapsedMins).padStart(2, "0")}:${String(elapsedSecs).padStart(2, "0")}`;
 
   return `
     <div class="flex flex-col w-full pb-20">
@@ -60,10 +60,10 @@ export function renderGuidedTeachingRunner(state) {
                 type="button" 
                 onclick="window.teachaura.toggleLiveTimer()"
                 class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-primary-container transition-all shadow-sm"
-                title="${classroom.isRunning ? 'Pause Stage Timer' : 'Resume Stage Timer'}"
+                title="${classroom.isRunning ? "Pause Stage Timer" : "Resume Stage Timer"}"
               >
                 <span class="material-symbols-outlined text-[22px]">
-                  ${classroom.isRunning ? 'pause' : 'play_arrow'}
+                  ${classroom.isRunning ? "pause" : "play_arrow"}
                 </span>
               </button>
 
@@ -94,7 +94,7 @@ export function renderGuidedTeachingRunner(state) {
             <button 
               type="button" 
               onclick="window.teachaura.setClassroomMode('blackboard')"
-              class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${classroom.mode === 'blackboard' ? 'bg-inverse-surface text-inverse-on-surface shadow-sm' : 'bg-surface-container-low text-on-surface hover:bg-surface-container'}"
+              class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${classroom.mode === "blackboard" ? "bg-inverse-surface text-inverse-on-surface shadow-sm" : "bg-surface-container-low text-on-surface hover:bg-surface-container"}"
             >
               <span class="material-symbols-outlined text-[16px]">edit_note</span>
               <span>Blackboard Mode</span>
@@ -103,7 +103,7 @@ export function renderGuidedTeachingRunner(state) {
             <button 
               type="button" 
               onclick="window.teachaura.setClassroomMode('projector')"
-              class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${classroom.mode === 'projector' ? 'bg-primary text-white shadow-sm' : 'bg-surface-container-low text-on-surface hover:bg-surface-container'}"
+              class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${classroom.mode === "projector" ? "bg-primary text-white shadow-sm" : "bg-surface-container-low text-on-surface hover:bg-surface-container"}"
             >
               <span class="material-symbols-outlined text-[16px]">cast</span>
               <span>Projector Mode (Clean)</span>
@@ -115,7 +115,7 @@ export function renderGuidedTeachingRunner(state) {
               class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-surface-container-low text-on-surface hover:bg-surface-container transition-all"
             >
               <span class="material-symbols-outlined text-[16px] text-tertiary">notifications_active</span>
-              <span>Chime Alert: ${classroom.chimeAlert ? 'ON' : 'OFF'}</span>
+              <span>Chime Alert: ${classroom.chimeAlert ? "ON" : "OFF"}</span>
             </button>
           </div>
 
@@ -132,41 +132,49 @@ export function renderGuidedTeachingRunner(state) {
 
       <!-- Horizontal Stage Stepper (5 Stages) -->
       <section class="grid grid-cols-2 md:grid-cols-5 gap-space-sm mb-space-lg">
-        ${stages.map((stage, idx) => {
-          const isDone = classroom.completedStages.includes(idx);
-          const isActive = classroom.currentStageIndex === idx;
+        ${stages
+          .map((stage, idx) => {
+            const isDone = classroom.completedStages.includes(idx);
+            const isActive = classroom.currentStageIndex === idx;
 
-          return `
+            return `
             <div 
               onclick="window.teachaura.jumpToStage(${idx})"
               class="p-3 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
-                isActive 
-                  ? 'bg-surface-container-lowest border-2 border-primary shadow-sm' 
-                  : isDone 
-                  ? 'bg-surface-container-low border-outline-variant/40 hover:bg-surface-container' 
-                  : 'bg-surface-container-lowest border-outline-variant/20 opacity-70 hover:opacity-100'
+                isActive
+                  ? "bg-surface-container-lowest border-2 border-primary shadow-sm"
+                  : isDone
+                    ? "bg-surface-container-low border-outline-variant/40 hover:bg-surface-container"
+                    : "bg-surface-container-lowest border-outline-variant/20 opacity-70 hover:opacity-100"
               }"
             >
               <div class="flex items-center justify-between">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">STAGE ${idx + 1}</span>
-                ${isDone ? `
+                ${
+                  isDone
+                    ? `
                   <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                ` : isActive ? `
+                `
+                    : isActive
+                      ? `
                   <span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary text-white uppercase">Active</span>
-                ` : `
+                `
+                      : `
                   <span class="material-symbols-outlined text-[16px] text-on-surface-variant">hourglass_empty</span>
-                `}
+                `
+                }
               </div>
               <div class="my-1.5">
                 <h3 class="font-headline text-xs font-bold text-on-surface line-clamp-1">${stage.title}</h3>
                 <span class="text-[11px] text-on-surface-variant">${stage.plannedDuration}</span>
               </div>
               <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
-                <div class="h-full ${isDone ? 'bg-primary' : isActive ? 'bg-tertiary-fixed-dim' : 'bg-transparent'}" style="width: ${isDone ? '100%' : isActive ? '56%' : '0%'};"></div>
+                <div class="h-full ${isDone ? "bg-primary" : isActive ? "bg-tertiary-fixed-dim" : "bg-transparent"}" style="width: ${isDone ? "100%" : isActive ? "56%" : "0%"};"></div>
               </div>
             </div>
           `;
-        }).join('')}
+          })
+          .join("")}
       </section>
 
       <!-- Main Live Classroom Split -->

@@ -1,6 +1,6 @@
 export function renderAssessmentStudio(state) {
   const assessment = state.assessmentData;
-  const isStudent = state.assessmentView === 'student';
+  const isStudent = state.assessmentView === "student";
 
   return `
     <div class="flex flex-col w-full pb-20">
@@ -130,7 +130,7 @@ export function renderAssessmentStudio(state) {
                 <button 
                   type="button" 
                   onclick="window.teachaura.toggleAssessmentView('student')"
-                  class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isStudent ? 'bg-primary text-white shadow-sm' : 'bg-surface-container-low text-on-surface hover:bg-surface-container'}"
+                  class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${isStudent ? "bg-primary text-white shadow-sm" : "bg-surface-container-low text-on-surface hover:bg-surface-container"}"
                 >
                   <span class="material-symbols-outlined text-[16px]">edit_document</span>
                   <span>Student Test Paper</span>
@@ -138,14 +138,14 @@ export function renderAssessmentStudio(state) {
                 <button 
                   type="button" 
                   onclick="window.teachaura.toggleAssessmentView('marking')"
-                  class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${!isStudent ? 'bg-primary text-white shadow-sm' : 'bg-surface-container-low text-on-surface hover:bg-surface-container'}"
+                  class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${!isStudent ? "bg-primary text-white shadow-sm" : "bg-surface-container-low text-on-surface hover:bg-surface-container"}"
                 >
                   <span class="material-symbols-outlined text-[16px]">fact_check</span>
                   <span>Teacher's Marking Guide &amp; Rubric</span>
                 </button>
               </div>
               <span class="text-xs text-on-surface-variant font-medium">
-                ${isStudent ? 'Pupil Clean Examination Sheet' : 'WAEC / BECE Standardized Scheme'}
+                ${isStudent ? "Pupil Clean Examination Sheet" : "WAEC / BECE Standardized Scheme"}
               </span>
             </div>
 
@@ -178,46 +178,60 @@ export function renderAssessmentStudio(state) {
               <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-2">
                 <span class="text-xs font-semibold text-on-surface">1. ${assessment.questions[0].question}</span>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-1">
-                  ${assessment.questions[0].options.map((opt, i) => {
-                    const isCorrect = i === assessment.questions[0].correctIndex;
-                    return `
-                      <div class="p-2 rounded-lg text-xs flex items-center gap-2 ${(!isStudent && isCorrect) ? 'bg-secondary-container/60 border border-primary/40 font-semibold text-on-surface' : 'bg-white border border-outline-variant/30 text-on-surface'}">
-                        <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${(!isStudent && isCorrect) ? 'bg-primary text-white' : 'bg-surface-container text-on-surface'}">
+                  ${assessment.questions[0].options
+                    .map((opt, i) => {
+                      const isCorrect =
+                        i === assessment.questions[0].correctIndex;
+                      return `
+                      <div class="p-2 rounded-lg text-xs flex items-center gap-2 ${!isStudent && isCorrect ? "bg-secondary-container/60 border border-primary/40 font-semibold text-on-surface" : "bg-white border border-outline-variant/30 text-on-surface"}">
+                        <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${!isStudent && isCorrect ? "bg-primary text-white" : "bg-surface-container text-on-surface"}">
                           ${String.fromCharCode(65 + i)}
                         </span>
                         <span>${opt}</span>
                       </div>
                     `;
-                  }).join('')}
+                    })
+                    .join("")}
                 </div>
-                ${!isStudent ? `
+                ${
+                  !isStudent
+                    ? `
                   <div class="mt-2 p-2 bg-white rounded border border-outline-variant/30 text-[11px] text-on-surface-variant">
                     <strong class="text-primary">${assessment.questions[0].markingScheme}</strong>
                   </div>
-                ` : ''}
+                `
+                    : ""
+                }
               </div>
 
               <!-- Question 2 -->
               <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-2">
                 <span class="text-xs font-semibold text-on-surface">2. ${assessment.questions[1].question}</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-1">
-                  ${assessment.questions[1].options.map((opt, i) => {
-                    const isCorrect = i === assessment.questions[1].correctIndex;
-                    return `
-                      <div class="p-2 rounded-lg text-xs flex items-center gap-2 ${(!isStudent && isCorrect) ? 'bg-secondary-container/60 border border-primary/40 font-semibold text-on-surface' : 'bg-white border border-outline-variant/30 text-on-surface'}">
-                        <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${(!isStudent && isCorrect) ? 'bg-primary text-white' : 'bg-surface-container text-on-surface'}">
+                  ${assessment.questions[1].options
+                    .map((opt, i) => {
+                      const isCorrect =
+                        i === assessment.questions[1].correctIndex;
+                      return `
+                      <div class="p-2 rounded-lg text-xs flex items-center gap-2 ${!isStudent && isCorrect ? "bg-secondary-container/60 border border-primary/40 font-semibold text-on-surface" : "bg-white border border-outline-variant/30 text-on-surface"}">
+                        <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${!isStudent && isCorrect ? "bg-primary text-white" : "bg-surface-container text-on-surface"}">
                           ${String.fromCharCode(65 + i)}
                         </span>
                         <span>${opt}</span>
                       </div>
                     `;
-                  }).join('')}
+                    })
+                    .join("")}
                 </div>
-                ${!isStudent ? `
+                ${
+                  !isStudent
+                    ? `
                   <div class="mt-2 p-2 bg-white rounded border border-outline-variant/30 text-[11px] text-on-surface-variant">
                     <strong class="text-primary">${assessment.questions[1].markingScheme}</strong>
                   </div>
-                ` : ''}
+                `
+                    : ""
+                }
               </div>
             </div>
 
@@ -231,16 +245,20 @@ export function renderAssessmentStudio(state) {
               <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-2">
                 <p class="text-xs text-on-surface leading-relaxed">
                   3. The cartilaginous structure commonly referred to as the 'voice box' located at the superior opening of the trachea is scientifically known as the ${
-                    isStudent 
-                      ? '________________________.' 
+                    isStudent
+                      ? "________________________."
                       : '<strong class="text-primary underline px-1">Larynx</strong>.'
                   }
                 </p>
-                ${!isStudent ? `
+                ${
+                  !isStudent
+                    ? `
                   <div class="p-2 bg-white rounded border border-outline-variant/30 text-[11px] text-on-surface-variant">
                     <span class="font-bold text-primary">Model Answer: Larynx (1 Mk).</span> Accepted: Larynx / Voice box. (Do NOT accept Pharynx or Epiglottis).
                   </div>
-                ` : ''}
+                `
+                    : ""
+                }
               </div>
             </div>
 
@@ -256,13 +274,16 @@ export function renderAssessmentStudio(state) {
                   4. ${assessment.questions[3].question}
                 </p>
 
-                ${isStudent ? `
+                ${
+                  isStudent
+                    ? `
                   <!-- Blank writing space for students -->
                   <div class="h-40 bg-white border border-dashed border-outline-variant rounded-xl p-3 flex flex-col justify-between text-on-surface-variant text-[11px]">
                     <span>[Candidate Answer Space for Part (a) Table &amp; Part (b) Explanation]</span>
                     <span class="text-right text-[10px]">Continue on back if needed</span>
                   </div>
-                ` : `
+                `
+                    : `
                   <!-- Rubric Table for Teacher -->
                   <div class="overflow-x-auto border border-outline-variant/40 rounded-xl bg-white">
                     <table class="w-full text-xs text-left">
@@ -275,14 +296,18 @@ export function renderAssessmentStudio(state) {
                         </tr>
                       </thead>
                       <tbody class="divide-y divide-outline-variant/20">
-                        ${assessment.questions[3].rubric.map(r => `
+                        ${assessment.questions[3].rubric
+                          .map(
+                            (r) => `
                           <tr>
                             <td class="p-2.5 font-bold text-on-surface">${r.parameter}</td>
                             <td class="p-2.5 text-on-surface-variant">${r.inhaled}</td>
                             <td class="p-2.5 text-on-surface-variant">${r.exhaled}</td>
                             <td class="p-2.5 text-right font-bold text-primary">${r.marks}</td>
                           </tr>
-                        `).join('')}
+                        `,
+                          )
+                          .join("")}
                       </tbody>
                     </table>
                   </div>
@@ -291,7 +316,8 @@ export function renderAssessmentStudio(state) {
                     <strong class="text-primary font-bold">Part (b) Mechanism Rubric [2 Marks]:</strong>
                     <p class="text-on-surface-variant text-[11px] mt-1">${assessment.questions[3].partB}</p>
                   </div>
-                `}
+                `
+                }
               </div>
             </div>
           </div>

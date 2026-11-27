@@ -2,18 +2,102 @@ export function renderWeeklyPlanner(state) {
   const currentWeek = state.institution.currentWeek;
 
   const weeklySchedule = [
-    { week: 1, topic: "Living Things & Biological Classification", status: "Completed", rate: 100, tag: "NERDC Unit 1.1", periods: 3 },
-    { week: 2, topic: "Circulatory System: Blood Composition & Functions", status: "Completed", rate: 100, tag: "NERDC Unit 2.1", periods: 3 },
-    { week: 3, topic: "Heart Structure & Double Circulation Mechanism", status: "Completed", rate: 100, tag: "NERDC Unit 2.2", periods: 3 },
-    { week: 4, topic: "Excretory System: Structure of Human Kidney & Skin", status: "Completed", rate: 100, tag: "NERDC Unit 3.1", periods: 3 },
-    { week: 5, topic: "Environmental Pollution & Harmattan Health Effects", status: "Completed", rate: 100, tag: "NERDC Unit 3.2", periods: 3 },
-    { week: 6, topic: "The Human Respiratory System: Inhalation & Exhalation", status: "Active (Current)", rate: 75, tag: "NERDC Unit 4.1", periods: 3 },
-    { week: 7, topic: "Mid-Term Break (2 Days) & Lab Practical Double Block", status: "Auto-Rebalanced", rate: 0, tag: "AI Rescheduled", periods: 3 },
-    { week: 8, topic: "Cellular Respiration & Energy Release in Alveoli", status: "Upcoming", rate: 0, tag: "NERDC Unit 4.2", periods: 3 },
-    { week: 9, topic: "Ecology: Habitats, Food Chains & Local Niches", status: "Upcoming", rate: 0, tag: "NERDC Unit 5.1", periods: 3 },
-    { week: 10, topic: "Term Revisions & BECE Mock Practice Tests", status: "Upcoming", rate: 0, tag: "Exam Prep", periods: 3 },
-    { week: 11, topic: "Unified Term Examinations (All Streams)", status: "Upcoming", rate: 0, tag: "Assessment", periods: 3 },
-    { week: 12, topic: "Grade Compilation, Pupil Reports & Vacation", status: "Upcoming", rate: 0, tag: "Administrative", periods: 2 }
+    {
+      week: 1,
+      topic: "Living Things & Biological Classification",
+      status: "Completed",
+      rate: 100,
+      tag: "NERDC Unit 1.1",
+      periods: 3,
+    },
+    {
+      week: 2,
+      topic: "Circulatory System: Blood Composition & Functions",
+      status: "Completed",
+      rate: 100,
+      tag: "NERDC Unit 2.1",
+      periods: 3,
+    },
+    {
+      week: 3,
+      topic: "Heart Structure & Double Circulation Mechanism",
+      status: "Completed",
+      rate: 100,
+      tag: "NERDC Unit 2.2",
+      periods: 3,
+    },
+    {
+      week: 4,
+      topic: "Excretory System: Structure of Human Kidney & Skin",
+      status: "Completed",
+      rate: 100,
+      tag: "NERDC Unit 3.1",
+      periods: 3,
+    },
+    {
+      week: 5,
+      topic: "Environmental Pollution & Harmattan Health Effects",
+      status: "Completed",
+      rate: 100,
+      tag: "NERDC Unit 3.2",
+      periods: 3,
+    },
+    {
+      week: 6,
+      topic: "The Human Respiratory System: Inhalation & Exhalation",
+      status: "Active (Current)",
+      rate: 75,
+      tag: "NERDC Unit 4.1",
+      periods: 3,
+    },
+    {
+      week: 7,
+      topic: "Mid-Term Break (2 Days) & Lab Practical Double Block",
+      status: "Auto-Rebalanced",
+      rate: 0,
+      tag: "AI Rescheduled",
+      periods: 3,
+    },
+    {
+      week: 8,
+      topic: "Cellular Respiration & Energy Release in Alveoli",
+      status: "Upcoming",
+      rate: 0,
+      tag: "NERDC Unit 4.2",
+      periods: 3,
+    },
+    {
+      week: 9,
+      topic: "Ecology: Habitats, Food Chains & Local Niches",
+      status: "Upcoming",
+      rate: 0,
+      tag: "NERDC Unit 5.1",
+      periods: 3,
+    },
+    {
+      week: 10,
+      topic: "Term Revisions & BECE Mock Practice Tests",
+      status: "Upcoming",
+      rate: 0,
+      tag: "Exam Prep",
+      periods: 3,
+    },
+    {
+      week: 11,
+      topic: "Unified Term Examinations (All Streams)",
+      status: "Upcoming",
+      rate: 0,
+      tag: "Assessment",
+      periods: 3,
+    },
+    {
+      week: 12,
+      topic: "Grade Compilation, Pupil Reports & Vacation",
+      status: "Upcoming",
+      rate: 0,
+      tag: "Administrative",
+      periods: 2,
+    },
   ];
 
   return `
@@ -74,34 +158,35 @@ export function renderWeeklyPlanner(state) {
 
       <!-- 12-Week Curriculum Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-md">
-        ${weeklySchedule.map(item => {
-          const isCurrent = item.week === currentWeek;
-          const isDone = item.status === 'Completed';
+        ${weeklySchedule
+          .map((item) => {
+            const isCurrent = item.week === currentWeek;
+            const isDone = item.status === "Completed";
 
-          return `
+            return `
             <div class="bg-surface-container-lowest rounded-2xl p-space-md border transition-all ${
-              isCurrent 
-                ? 'border-2 border-primary shadow-md' 
-                : isDone 
-                ? 'border-outline-variant/30 shadow-sm opacity-90' 
-                : 'border-outline-variant/30 shadow-sm'
+              isCurrent
+                ? "border-2 border-primary shadow-md"
+                : isDone
+                  ? "border-outline-variant/30 shadow-sm opacity-90"
+                  : "border-outline-variant/30 shadow-sm"
             } flex flex-col justify-between">
               <div class="flex flex-col gap-2">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
-                    <span class="w-7 h-7 rounded-lg ${isCurrent ? 'bg-primary text-white' : isDone ? 'bg-secondary-container text-on-secondary-container' : 'bg-surface-container text-on-surface-variant'} flex items-center justify-center font-bold text-xs">
+                    <span class="w-7 h-7 rounded-lg ${isCurrent ? "bg-primary text-white" : isDone ? "bg-secondary-container text-on-secondary-container" : "bg-surface-container text-on-surface-variant"} flex items-center justify-center font-bold text-xs">
                       ${item.week}
                     </span>
                     <span class="text-xs font-bold text-on-surface uppercase tracking-wider">Week ${item.week}</span>
                   </div>
                   <span class="px-2 py-0.5 rounded text-[10px] font-bold ${
-                    isCurrent 
-                      ? 'bg-primary/10 text-primary' 
-                      : isDone 
-                      ? 'bg-secondary-container text-on-secondary-container' 
-                      : item.status.includes('Rebalanced')
-                      ? 'bg-[#FEF3C7] text-[#92400E]'
-                      : 'bg-surface-container text-on-surface-variant'
+                    isCurrent
+                      ? "bg-primary/10 text-primary"
+                      : isDone
+                        ? "bg-secondary-container text-on-secondary-container"
+                        : item.status.includes("Rebalanced")
+                          ? "bg-[#FEF3C7] text-[#92400E]"
+                          : "bg-surface-container text-on-surface-variant"
                   }">
                     ${item.status}
                   </span>
@@ -121,13 +206,15 @@ export function renderWeeklyPlanner(state) {
               <div class="pt-3 mt-3 border-t border-outline-variant/20 flex flex-col gap-1.5">
                 <div class="flex items-center justify-between text-[11px]">
                   <span class="text-on-surface-variant font-medium">Syllabus Coverage</span>
-                  <span class="font-bold ${isCurrent ? 'text-primary' : 'text-on-surface'}">${item.rate}%</span>
+                  <span class="font-bold ${isCurrent ? "text-primary" : "text-on-surface"}">${item.rate}%</span>
                 </div>
                 <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
-                  <div class="h-full ${isCurrent ? 'bg-primary animate-pulse' : isDone ? 'bg-primary' : 'bg-transparent'}" style="width: ${item.rate}%;"></div>
+                  <div class="h-full ${isCurrent ? "bg-primary animate-pulse" : isDone ? "bg-primary" : "bg-transparent"}" style="width: ${item.rate}%;"></div>
                 </div>
 
-                ${isCurrent ? `
+                ${
+                  isCurrent
+                    ? `
                   <button 
                     type="button" 
                     onclick="window.teachaura.navigate('lesson-planning')"
@@ -136,11 +223,14 @@ export function renderWeeklyPlanner(state) {
                     <span class="material-symbols-outlined text-[14px]">edit_note</span>
                     <span>Open Lesson Studio</span>
                   </button>
-                ` : ''}
+                `
+                    : ""
+                }
               </div>
             </div>
           `;
-        }).join('')}
+          })
+          .join("")}
       </div>
     </div>
   `;

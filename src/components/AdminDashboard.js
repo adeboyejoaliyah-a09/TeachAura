@@ -133,7 +133,9 @@ export function renderAdminDashboard(state) {
             </div>
 
             <div class="flex flex-col gap-3">
-              ${metrics.departments.map(dept => `
+              ${metrics.departments
+                .map(
+                  (dept) => `
                 <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col gap-2">
                   <div class="flex items-center justify-between">
                     <div>
@@ -142,14 +144,16 @@ export function renderAdminDashboard(state) {
                     </div>
                     <div class="flex flex-col items-end">
                       <span class="font-headline text-base font-bold text-primary">${dept.syllabusRate}%</span>
-                      <span class="text-[11px] font-semibold ${dept.status.includes('Ahead') ? 'text-primary' : dept.status.includes('Review') ? 'text-[#B45309]' : 'text-on-surface-variant'}">${dept.status}</span>
+                      <span class="text-[11px] font-semibold ${dept.status.includes("Ahead") ? "text-primary" : dept.status.includes("Review") ? "text-[#B45309]" : "text-on-surface-variant"}">${dept.status}</span>
                     </div>
                   </div>
                   <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
                     <div class="h-full bg-primary rounded-full" style="width: ${dept.syllabusRate}%;"></div>
                   </div>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
           </div>
 
@@ -187,12 +191,14 @@ export function renderAdminDashboard(state) {
                 <h2 class="font-headline text-base font-bold text-on-surface">Pending Approvals Queue</h2>
               </div>
               <span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold">
-                ${metrics.pendingApprovals.filter(a => a.status === 'Pending Review').length} Pending
+                ${metrics.pendingApprovals.filter((a) => a.status === "Pending Review").length} Pending
               </span>
             </div>
 
             <div class="flex flex-col gap-3">
-              ${metrics.pendingApprovals.map(item => `
+              ${metrics.pendingApprovals
+                .map(
+                  (item) => `
                 <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col gap-2">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">${item.type}</span>
@@ -203,8 +209,10 @@ export function renderAdminDashboard(state) {
                     <p class="text-[11px] text-on-surface-variant">${item.teacher} • <strong class="text-on-surface">${item.subject}</strong></p>
                   </div>
                   <div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
-                    <span class="text-[11px] font-semibold ${item.status.includes('Approved') ? 'text-primary' : 'text-[#B45309]'}">${item.status}</span>
-                    ${item.status === 'Pending Review' ? `
+                    <span class="text-[11px] font-semibold ${item.status.includes("Approved") ? "text-primary" : "text-[#B45309]"}">${item.status}</span>
+                    ${
+                      item.status === "Pending Review"
+                        ? `
                       <button 
                         type="button" 
                         onclick="window.teachaura.approveItem('${item.id}')"
@@ -212,12 +220,16 @@ export function renderAdminDashboard(state) {
                       >
                         Approve
                       </button>
-                    ` : `
+                    `
+                        : `
                       <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
-                    `}
+                    `
+                    }
                   </div>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
           </div>
         </div>

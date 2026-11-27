@@ -81,7 +81,9 @@ export function renderTeacherPerformance(state) {
               </tr>
             </thead>
             <tbody class="divide-y divide-outline-variant/20">
-              ${teachers.map(t => `
+              ${teachers
+                .map(
+                  (t) => `
                 <tr class="hover:bg-surface-container-low/50 transition-colors">
                   <td class="p-3">
                     <div class="flex flex-col">
@@ -94,16 +96,16 @@ export function renderTeacherPerformance(state) {
                     <div class="flex flex-col gap-1 w-28">
                       <div class="flex items-center justify-between text-[11px] font-bold">
                         <span class="text-on-surface">${t.syllabusCoverage}%</span>
-                        <span class="${t.syllabusCoverage >= 70 ? 'text-primary' : 'text-[#B45309]'}">
-                          ${t.syllabusCoverage >= 70 ? 'Ahead' : 'Pacing'}
+                        <span class="${t.syllabusCoverage >= 70 ? "text-primary" : "text-[#B45309]"}">
+                          ${t.syllabusCoverage >= 70 ? "Ahead" : "Pacing"}
                         </span>
                       </div>
                       <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
-                        <div class="h-full ${t.syllabusCoverage >= 70 ? 'bg-primary' : 'bg-[#F59E0B]'}" style="width: ${t.syllabusCoverage}%;"></div>
+                        <div class="h-full ${t.syllabusCoverage >= 70 ? "bg-primary" : "bg-[#F59E0B]"}" style="width: ${t.syllabusCoverage}%;"></div>
                       </div>
                     </div>
                   </td>
-                  <td class="p-3 font-semibold ${t.punctualityRate >= 95 ? 'text-primary' : 'text-on-surface'}">${t.punctualityRate}%</td>
+                  <td class="p-3 font-semibold ${t.punctualityRate >= 95 ? "text-primary" : "text-on-surface"}">${t.punctualityRate}%</td>
                   <td class="p-3 font-semibold text-on-surface">${t.guidedModeAdherence}%</td>
                   <td class="p-3 font-semibold text-on-surface">${t.studentCaAverage}%</td>
                   <td class="p-3">
@@ -113,11 +115,11 @@ export function renderTeacherPerformance(state) {
                   </td>
                   <td class="p-3">
                     <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                      t.status === 'Excellent' 
-                        ? 'bg-secondary-container text-on-secondary-container' 
-                        : t.status === 'Good' 
-                        ? 'bg-primary/10 text-primary' 
-                        : 'bg-[#FEF3C7] text-[#92400E]'
+                      t.status === "Excellent"
+                        ? "bg-secondary-container text-on-secondary-container"
+                        : t.status === "Good"
+                          ? "bg-primary/10 text-primary"
+                          : "bg-[#FEF3C7] text-[#92400E]"
                     }">
                       ${t.status}
                     </span>
@@ -132,20 +134,24 @@ export function renderTeacherPerformance(state) {
                     </button>
                   </td>
                 </tr>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </tbody>
           </table>
         </div>
       </div>
 
       <!-- Teacher Detail Scorecard Modal (if open) -->
-      ${selectedTeacher ? `
+      ${
+        selectedTeacher
+          ? `
         <div class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div class="bg-surface-container-lowest rounded-2xl max-w-2xl w-full p-space-lg shadow-2xl border border-outline-variant flex flex-col gap-4 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
               <div class="flex items-center gap-3">
                 <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-lg shadow-sm">
-                  ${selectedTeacher.name.charAt(4) || 'T'}
+                  ${selectedTeacher.name.charAt(4) || "T"}
                 </div>
                 <div>
                   <h3 class="font-headline text-lg font-bold text-on-surface">${selectedTeacher.name}</h3>
@@ -198,7 +204,9 @@ export function renderTeacherPerformance(state) {
             </div>
           </div>
         </div>
-      ` : ''}
+      `
+          : ""
+      }
     </div>
   `;
 }

@@ -67,17 +67,21 @@ export function renderLessonNotesAndActivities(state) {
             <table class="w-full text-xs text-left border-collapse">
               <thead class="bg-primary-container text-white font-headline text-xs uppercase">
                 <tr>
-                  ${shortNote.tableHeaders.map(h => `<th class="p-3 border-r border-teal-700/50">${h}</th>`).join('')}
+                  ${shortNote.tableHeaders.map((h) => `<th class="p-3 border-r border-teal-700/50">${h}</th>`).join("")}
                 </tr>
               </thead>
               <tbody class="divide-y divide-outline-variant/30 bg-white">
-                ${shortNote.tableRows.map((r, i) => `
-                  <tr class="${i % 2 === 0 ? 'bg-surface-container-lowest' : 'bg-surface-container-low/40'}">
+                ${shortNote.tableRows
+                  .map(
+                    (r, i) => `
+                  <tr class="${i % 2 === 0 ? "bg-surface-container-lowest" : "bg-surface-container-low/40"}">
                     <td class="p-3 font-bold text-primary border-r border-outline-variant/20">${r[0]}</td>
                     <td class="p-3 text-on-surface border-r border-outline-variant/20">${r[1]}</td>
                     <td class="p-3 text-on-surface">${r[2]}</td>
                   </tr>
-                `).join('')}
+                `,
+                  )
+                  .join("")}
               </tbody>
             </table>
           </div>

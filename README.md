@@ -6,7 +6,7 @@ TeachAura is an AI-powered teacher productivity platform that plans, prepares, o
 
 Initial market: **Nigeria** · Users: **primary and secondary school teachers** · Platform: **web application**
 
-> **Status:** In development. This README reflects the product requirements (PRD v1.0). Setup steps and the tech stack are initial recommendations and may change.
+> **Status:** In development. This document describes the product vision; several listed workflows are not implemented yet.
 
 ---
 
@@ -20,7 +20,7 @@ TeachAura brings curriculum planning, lesson preparation, teaching guidance, ass
 
 ---
 
-## Key Features
+## Product vision (planned capabilities)
 
 ### Curriculum intelligence
 Upload a syllabus (PDF, DOCX or DOC). TeachAura extracts topics, subtopics, learning objectives and expected coverage, then combines them with the term dates and timetable to propose a teaching schedule. Teachers review and approve it before it takes effect.
@@ -62,18 +62,20 @@ Overview, My Classes, My Subjects, Weekly Planner, Lesson Preparation, Teaching 
 
 ---
 
-## Tech Stack (proposed)
+## Current implementation
 
 | Layer | Technology |
 |---|---|
-| Frontend | React, Next.js, Tailwind CSS |
-| Backend | Node.js, Express.js |
-| Database | PostgreSQL |
-| Authentication | Supabase Auth |
-| File storage | Supabase Storage |
-| AI | Large Language Model API |
-| Document processing | PDF and DOCX extraction |
-| Hosting | Vercel or suitable cloud infrastructure |
+| Frontend | Static HTML and vanilla JavaScript modules; Tailwind CSS CDN |
+| Backend | Node.js, Express.js, TypeScript |
+| Database | PostgreSQL through Prisma |
+| Authentication | Supabase JWT verification in the API |
+| File storage | Not implemented |
+| AI | UI simulations only; no model provider is connected |
+| Document processing | Not implemented |
+| Hosting | Not configured |
+
+The browser prototype uses hardcoded sample data and `localStorage`; it is not connected to the Express API. The API currently provides health/readiness, authenticated teacher profile, and sync endpoints. Lesson content, classes in the prototype, assessments, administrator metrics, and achievements are not persisted by the API.
 
 ---
 
@@ -91,35 +93,48 @@ All AI-generated educational material must be reviewable by teachers before use,
 
 ---
 
-## Roadmap
+## Roadmap status
 
-- [x] **Phase 1, Foundation:** authentication, dashboard, class and subject management, timetable configuration
-- [x] **Phase 2, AI intelligence:** syllabus analysis, curriculum organisation, weekly lesson planning, lesson note and students' short note generation
-- [x] **Phase 3, Teaching experience:** Guided Teaching Mode, session timers, teaching instructions, interactive lesson controls
-- [x] **Phase 4, Assessment:** question, assignment and classwork generators, answer keys, marking schemes
-- [x] **Phase 5, Progress and engagement:** weekly progress, syllabus coverage, school administrator supervision, teacher performance monitoring, streaks, badges
+- [ ] **Phase 1, Foundation:** dashboard screens are prototypes; API authentication and generic sync exist but the UI is not connected to them.
+- [ ] **Phase 2, AI intelligence:** lesson and curriculum screens show sample content; syllabus extraction and model-backed generation are not implemented.
+- [ ] **Phase 3, Teaching experience:** guided runner interactions are client-side demo state and are not persisted to the API.
+- [ ] **Phase 4, Assessment:** assessment screens use sample data; generation and saved assessments are not connected to a backend.
+- [ ] **Phase 5, Progress and engagement:** displayed metrics and achievements are sample data; production reporting is not implemented.
 
 ---
 
 ## Getting Started
 
-Run the interactive TeachAura frontend:
+Install dependencies and generate the Prisma client:
 
 ```bash
-# Clone the repository
-git clone https://github.com/adeboyejoaliyah-a09/TeachAura.git
-cd teachaura
-
-# Run the frontend development server
-npm start
-# or
-npm run dev
-
-# Run automated smoke and verification tests
-npm test
+npm ci
+npm run db:generate
 ```
 
-The application will be live at `http://localhost:3000`. You can also open `index.html` directly in any modern web browser.
+Copy `.env.example` to `.env`, configure a reachable PostgreSQL `DATABASE_URL`, your Supabase project URL, and a random `SYNC_CURSOR_SECRET` of at least 32 characters. Use a restricted database role for the API, not the database owner. The frontend is served on port 3000; set the API's `PORT=3001` and `CORS_ORIGINS=http://localhost:3000`.
+
+Apply migrations, then start the API and frontend in separate terminals:
+
+```bash
+npm run db:deploy
+npm run dev:api
+```
+
+```bash
+npm run dev
+```
+
+The prototype is at `http://localhost:3000`. The API listens on the port in `.env`; `/ready` checks database connectivity. Supabase configuration is required to exercise authenticated routes.
+
+Run validation:
+
+```bash
+npm run check
+npm run test:server
+```
+
+PostgreSQL integration tests run only when `TEST_DATABASE_URL` is set to the restricted application role.
 
 
 ---

@@ -27,7 +27,7 @@ const envSchema = z.object({
   SUPABASE_URL: z.string().url(),
   CORS_ORIGINS: z
     .string()
-    .default("http://localhost:3001")
+    .default("http://localhost:3000")
     .transform((value) =>
       value
         .split(",")

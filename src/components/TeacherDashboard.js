@@ -1,6 +1,5 @@
 export function renderTeacherDashboard(state) {
   const teacher = state.currentUser.teacher;
-  const classes = state.todayClasses;
   const pacing = state.syllabusPacing;
 
   return `
@@ -319,7 +318,9 @@ export function renderTeacherDashboard(state) {
             </div>
 
             <div class="flex flex-col gap-3">
-              ${pacing.map(p => `
+              ${pacing
+                .map(
+                  (p) => `
                 <div class="flex flex-col gap-1.5 p-space-sm bg-surface-container-low rounded-xl">
                   <div class="flex items-center justify-between">
                     <span class="font-body text-xs font-bold text-on-surface">${p.title}</span>
@@ -330,10 +331,12 @@ export function renderTeacherDashboard(state) {
                   </div>
                   <div class="flex items-center justify-between text-[11px] text-on-surface-variant">
                     <span>${p.completedTopics} of ${p.totalTopics} Topics Done</span>
-                    <span class="${p.isAhead ? 'text-primary font-bold' : ''}">${p.status}</span>
+                    <span class="${p.isAhead ? "text-primary font-bold" : ""}">${p.status}</span>
                   </div>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
 
             <!-- Action Button -->

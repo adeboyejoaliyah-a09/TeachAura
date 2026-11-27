@@ -70,11 +70,14 @@ export function renderBadgesAndAchievements(state) {
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-md">
-            ${badges.filter(b => b.category === 'weekly').map(badge => `
+            ${badges
+              .filter((b) => b.category === "weekly")
+              .map(
+                (badge) => `
               <div class="bg-surface-container-lowest rounded-2xl p-space-md border border-outline-variant/30 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
                 <div class="flex items-start justify-between">
                   <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-xl ${badge.status === 'unlocked' ? 'bg-primary/10 text-primary' : 'bg-surface-container text-on-surface-variant'} flex items-center justify-center">
+                    <div class="w-12 h-12 rounded-xl ${badge.status === "unlocked" ? "bg-primary/10 text-primary" : "bg-surface-container text-on-surface-variant"} flex items-center justify-center">
                       <span class="material-symbols-outlined text-[26px]">${badge.icon}</span>
                     </div>
                     <div>
@@ -84,8 +87,8 @@ export function renderBadgesAndAchievements(state) {
                       <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-1.5 py-0.2 rounded">${badge.level}</span>
                     </div>
                   </div>
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${badge.status === 'unlocked' ? 'bg-secondary-container text-on-secondary-container' : 'bg-surface-container text-on-surface-variant'}">
-                    ${badge.status === 'unlocked' ? 'Unlocked' : 'In Progress'}
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${badge.status === "unlocked" ? "bg-secondary-container text-on-secondary-container" : "bg-surface-container text-on-surface-variant"}">
+                    ${badge.status === "unlocked" ? "Unlocked" : "In Progress"}
                   </span>
                 </div>
 
@@ -95,12 +98,14 @@ export function renderBadgesAndAchievements(state) {
 
                 <div class="pt-3 mt-3 border-t border-outline-variant/20 flex flex-col gap-1.5">
                   <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-on-surface-variant">${badge.dateUnlocked || 'Target: End of Week'}</span>
+                    <span class="text-on-surface-variant">${badge.dateUnlocked || "Target: End of Week"}</span>
                     <span class="font-bold text-primary">${badge.rewardText}</span>
                   </div>
                 </div>
               </div>
-            `).join('')}
+            `,
+              )
+              .join("")}
           </div>
         </div>
 
@@ -115,11 +120,14 @@ export function renderBadgesAndAchievements(state) {
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-md">
-            ${badges.filter(b => b.category === 'term').map(badge => `
+            ${badges
+              .filter((b) => b.category === "term")
+              .map(
+                (badge) => `
               <div class="bg-surface-container-lowest rounded-2xl p-space-md border border-outline-variant/30 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
                 <div class="flex items-start justify-between">
                   <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-xl ${badge.status === 'unlocked' ? 'bg-tertiary-fixed text-on-tertiary-fixed' : 'bg-surface-container text-on-surface-variant'} flex items-center justify-center">
+                    <div class="w-12 h-12 rounded-xl ${badge.status === "unlocked" ? "bg-tertiary-fixed text-on-tertiary-fixed" : "bg-surface-container text-on-surface-variant"} flex items-center justify-center">
                       <span class="material-symbols-outlined text-[26px]">${badge.icon}</span>
                     </div>
                     <div>
@@ -127,8 +135,8 @@ export function renderBadgesAndAchievements(state) {
                       <span class="text-[10px] font-bold uppercase tracking-wider text-tertiary bg-tertiary/10 px-1.5 py-0.2 rounded">${badge.level}</span>
                     </div>
                   </div>
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${badge.status === 'unlocked' ? 'bg-secondary-container text-on-secondary-container' : 'bg-surface-container text-on-surface-variant'}">
-                    ${badge.status === 'unlocked' ? 'Unlocked' : 'In Progress'}
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${badge.status === "unlocked" ? "bg-secondary-container text-on-secondary-container" : "bg-surface-container text-on-surface-variant"}">
+                    ${badge.status === "unlocked" ? "Unlocked" : "In Progress"}
                   </span>
                 </div>
 
@@ -147,7 +155,9 @@ export function renderBadgesAndAchievements(state) {
                   <span class="text-[10px] text-primary font-bold mt-0.5">${badge.rewardText}</span>
                 </div>
               </div>
-            `).join('')}
+            `,
+              )
+              .join("")}
           </div>
         </div>
       </div>

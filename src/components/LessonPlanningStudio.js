@@ -143,9 +143,13 @@ export function renderLessonPlanningStudio(state) {
                 <span class="material-symbols-outlined text-[16px]">science</span> Instructional Materials
               </span>
               <div class="flex flex-wrap gap-1.5 mt-2">
-                ${lesson.instructionalMaterials.map(m => `
+                ${lesson.instructionalMaterials
+                  .map(
+                    (m) => `
                   <span class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface text-xs font-medium border border-outline-variant/20">${m}</span>
-                `).join('')}
+                `,
+                  )
+                  .join("")}
               </div>
             </div>
             <div class="pt-2 border-t border-outline-variant/20">
@@ -227,13 +231,17 @@ export function renderLessonPlanningStudio(state) {
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-outline-variant/20">
-                  ${lesson.stages[1].steps.map(s => `
+                  ${lesson.stages[1].steps
+                    .map(
+                      (s) => `
                     <tr>
                       <td class="p-2.5 font-bold text-primary align-top">Step ${s.stepNumber} <br><span class="text-on-surface-variant font-normal">(${s.time})</span></td>
                       <td class="p-2.5 text-on-surface align-top leading-relaxed">${s.teacherAction}</td>
                       <td class="p-2.5 text-on-surface-variant align-top leading-relaxed">${s.pupilEngagement}</td>
                     </tr>
-                  `).join('')}
+                  `,
+                    )
+                    .join("")}
                 </tbody>
               </table>
             </div>
@@ -324,7 +332,9 @@ export function renderLessonPlanningStudio(state) {
 
             <!-- Clickable Suggestion Cards -->
             <div class="flex flex-col gap-3">
-              ${suggestions.map(s => `
+              ${suggestions
+                .map(
+                  (s) => `
                 <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/40 hover:bg-surface-container transition-all flex flex-col gap-1.5 group">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">${s.badge}</span>
@@ -340,7 +350,9 @@ export function renderLessonPlanningStudio(state) {
                   <h4 class="text-xs font-bold text-on-surface">${s.title}</h4>
                   <p class="text-[11px] text-on-surface-variant leading-relaxed">${s.description}</p>
                 </div>
-              `).join('')}
+              `,
+                )
+                .join("")}
             </div>
 
             <!-- Custom Aura Instruction Input -->
